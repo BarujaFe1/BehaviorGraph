@@ -1,0 +1,11 @@
+event_name,category,description,owner
+signup_started,acquisition,User opens signup form,growth
+signup_completed,acquisition,User finishes signup,growth
+onboarding_step_viewed,activation,User views an onboarding step,product
+feature_used,activation,User uses a core feature,product
+activation_completed,activation,User reaches activation milestone,product
+session_abandoned,friction,Session ends without progress,product
+error_shown,friction,UI error or blocker shown,engineering
+billing_viewed,monetization,User opens billing page,growth
+invite_sent,expansion,User invites a teammate,product
+return_visit,retention,User returns in a later session,product
