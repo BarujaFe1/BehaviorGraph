@@ -1,0 +1,685 @@
+{
+  "summary": {
+    "product": "BehaviorGraph",
+    "dataset": "synthetic_saas_onboarding",
+    "users": 220,
+    "events": 968,
+    "sessions": 289,
+    "activated_users": 55,
+    "activation_rate": 0.25,
+    "notice": "Demo uses synthetic events only — not production tracking."
+  },
+  "taxonomy": {
+    "events": [
+      {
+        "event_name": "signup_started",
+        "category": "acquisition",
+        "description": "User opens signup form",
+        "owner": "growth"
+      },
+      {
+        "event_name": "signup_completed",
+        "category": "acquisition",
+        "description": "User finishes signup",
+        "owner": "growth"
+      },
+      {
+        "event_name": "onboarding_step_viewed",
+        "category": "activation",
+        "description": "User views an onboarding step",
+        "owner": "product"
+      },
+      {
+        "event_name": "feature_used",
+        "category": "activation",
+        "description": "User uses a core feature",
+        "owner": "product"
+      },
+      {
+        "event_name": "activation_completed",
+        "category": "activation",
+        "description": "User reaches activation milestone",
+        "owner": "product"
+      },
+      {
+        "event_name": "session_abandoned",
+        "category": "friction",
+        "description": "Session ends without progress",
+        "owner": "product"
+      },
+      {
+        "event_name": "error_shown",
+        "category": "friction",
+        "description": "UI error or blocker shown",
+        "owner": "engineering"
+      },
+      {
+        "event_name": "billing_viewed",
+        "category": "monetization",
+        "description": "User opens billing page",
+        "owner": "growth"
+      },
+      {
+        "event_name": "invite_sent",
+        "category": "expansion",
+        "description": "User invites a teammate",
+        "owner": "product"
+      },
+      {
+        "event_name": "return_visit",
+        "category": "retention",
+        "description": "User returns in a later session",
+        "owner": "product"
+      }
+    ]
+  },
+  "funnel": {
+    "funnel": "activation",
+    "steps": [
+      {
+        "step": "signup_started",
+        "users": 220,
+        "conversion_from_previous": 1.0
+      },
+      {
+        "step": "signup_completed",
+        "users": 186,
+        "conversion_from_previous": 0.845
+      },
+      {
+        "step": "onboarding_step_viewed",
+        "users": 147,
+        "conversion_from_previous": 0.79
+      },
+      {
+        "step": "feature_used",
+        "users": 102,
+        "conversion_from_previous": 0.694
+      },
+      {
+        "step": "activation_completed",
+        "users": 55,
+        "conversion_from_previous": 0.539
+      }
+    ]
+  },
+  "cohorts": {
+    "cohorts": [
+      {
+        "cohort_week": "2026-04-27/2026-05-03",
+        "cohort_size": 16,
+        "weeks": [
+          {
+            "week_offset": 0,
+            "week": "2026-04-27/2026-05-03",
+            "retained_users": 16,
+            "retention_rate": 1.0
+          },
+          {
+            "week_offset": 1,
+            "week": "2026-05-04/2026-05-10",
+            "retained_users": 5,
+            "retention_rate": 0.312
+          },
+          {
+            "week_offset": 2,
+            "week": "2026-05-18/2026-05-24",
+            "retained_users": 1,
+            "retention_rate": 0.062
+          }
+        ]
+      },
+      {
+        "cohort_week": "2026-05-04/2026-05-10",
+        "cohort_size": 57,
+        "weeks": [
+          {
+            "week_offset": 0,
+            "week": "2026-05-04/2026-05-10",
+            "retained_users": 57,
+            "retention_rate": 1.0
+          },
+          {
+            "week_offset": 1,
+            "week": "2026-05-11/2026-05-17",
+            "retained_users": 12,
+            "retention_rate": 0.211
+          },
+          {
+            "week_offset": 2,
+            "week": "2026-05-18/2026-05-24",
+            "retained_users": 2,
+            "retention_rate": 0.035
+          },
+          {
+            "week_offset": 3,
+            "week": "2026-05-25/2026-05-31",
+            "retained_users": 3,
+            "retention_rate": 0.053
+          }
+        ]
+      },
+      {
+        "cohort_week": "2026-05-11/2026-05-17",
+        "cohort_size": 48,
+        "weeks": [
+          {
+            "week_offset": 0,
+            "week": "2026-05-11/2026-05-17",
+            "retained_users": 48,
+            "retention_rate": 1.0
+          },
+          {
+            "week_offset": 1,
+            "week": "2026-05-18/2026-05-24",
+            "retained_users": 3,
+            "retention_rate": 0.062
+          },
+          {
+            "week_offset": 2,
+            "week": "2026-05-25/2026-05-31",
+            "retained_users": 4,
+            "retention_rate": 0.083
+          },
+          {
+            "week_offset": 3,
+            "week": "2026-06-01/2026-06-07",
+            "retained_users": 2,
+            "retention_rate": 0.042
+          }
+        ]
+      },
+      {
+        "cohort_week": "2026-05-18/2026-05-24",
+        "cohort_size": 56,
+        "weeks": [
+          {
+            "week_offset": 0,
+            "week": "2026-05-18/2026-05-24",
+            "retained_users": 56,
+            "retention_rate": 1.0
+          },
+          {
+            "week_offset": 1,
+            "week": "2026-05-25/2026-05-31",
+            "retained_users": 11,
+            "retention_rate": 0.196
+          },
+          {
+            "week_offset": 2,
+            "week": "2026-06-01/2026-06-07",
+            "retained_users": 3,
+            "retention_rate": 0.054
+          },
+          {
+            "week_offset": 3,
+            "week": "2026-06-08/2026-06-14",
+            "retained_users": 4,
+            "retention_rate": 0.071
+          }
+        ]
+      },
+      {
+        "cohort_week": "2026-05-25/2026-05-31",
+        "cohort_size": 43,
+        "weeks": [
+          {
+            "week_offset": 0,
+            "week": "2026-05-25/2026-05-31",
+            "retained_users": 43,
+            "retention_rate": 1.0
+          },
+          {
+            "week_offset": 1,
+            "week": "2026-06-01/2026-06-07",
+            "retained_users": 4,
+            "retention_rate": 0.093
+          },
+          {
+            "week_offset": 2,
+            "week": "2026-06-08/2026-06-14",
+            "retained_users": 2,
+            "retention_rate": 0.047
+          },
+          {
+            "week_offset": 3,
+            "week": "2026-06-15/2026-06-21",
+            "retained_users": 2,
+            "retention_rate": 0.047
+          }
+        ]
+      }
+    ]
+  },
+  "journey": {
+    "nodes": [
+      {
+        "id": "signup_started",
+        "label": "signup_started"
+      },
+      {
+        "id": "signup_completed",
+        "label": "signup_completed"
+      },
+      {
+        "id": "onboarding_step_viewed",
+        "label": "onboarding_step_viewed"
+      },
+      {
+        "id": "feature_used",
+        "label": "feature_used"
+      },
+      {
+        "id": "activation_completed",
+        "label": "activation_completed"
+      },
+      {
+        "id": "session_abandoned",
+        "label": "session_abandoned"
+      },
+      {
+        "id": "return_visit",
+        "label": "return_visit"
+      },
+      {
+        "id": "error_shown",
+        "label": "error_shown"
+      },
+      {
+        "id": "billing_viewed",
+        "label": "billing_viewed"
+      },
+      {
+        "id": "invite_sent",
+        "label": "invite_sent"
+      }
+    ],
+    "edges": [
+      {
+        "source": "signup_started",
+        "target": "signup_completed",
+        "weight": 186
+      },
+      {
+        "source": "signup_started",
+        "target": "session_abandoned",
+        "weight": 34
+      },
+      {
+        "source": "signup_completed",
+        "target": "onboarding_step_viewed",
+        "weight": 147
+      },
+      {
+        "source": "signup_completed",
+        "target": "session_abandoned",
+        "weight": 39
+      },
+      {
+        "source": "onboarding_step_viewed",
+        "target": "feature_used",
+        "weight": 85
+      },
+      {
+        "source": "onboarding_step_viewed",
+        "target": "session_abandoned",
+        "weight": 41
+      },
+      {
+        "source": "onboarding_step_viewed",
+        "target": "error_shown",
+        "weight": 21
+      },
+      {
+        "source": "feature_used",
+        "target": "activation_completed",
+        "weight": 55
+      },
+      {
+        "source": "feature_used",
+        "target": "invite_sent",
+        "weight": 4
+      },
+      {
+        "source": "feature_used",
+        "target": "billing_viewed",
+        "weight": 2
+      },
+      {
+        "source": "return_visit",
+        "target": "feature_used",
+        "weight": 33
+      },
+      {
+        "source": "return_visit",
+        "target": "billing_viewed",
+        "weight": 5
+      },
+      {
+        "source": "return_visit",
+        "target": "invite_sent",
+        "weight": 5
+      },
+      {
+        "source": "error_shown",
+        "target": "feature_used",
+        "weight": 17
+      },
+      {
+        "source": "error_shown",
+        "target": "session_abandoned",
+        "weight": 4
+      },
+      {
+        "source": "invite_sent",
+        "target": "billing_viewed",
+        "weight": 1
+      }
+    ],
+    "engine": "networkx"
+  },
+  "segments": {
+    "segments": [
+      {
+        "id": "activated",
+        "name": "Activated",
+        "users": 55,
+        "definition": "Users who fired activation_completed"
+      },
+      {
+        "id": "at_risk",
+        "name": "At-risk / friction",
+        "users": 118,
+        "definition": "Users with session_abandoned who never activated"
+      },
+      {
+        "id": "power",
+        "name": "Power explorers",
+        "users": 20,
+        "definition": "Top 20 users by event volume in the demo window"
+      }
+    ]
+  },
+  "friction": {
+    "funnel_drops": [
+      {
+        "from_step": "signup_started",
+        "to_step": "signup_completed",
+        "drop_users": 34,
+        "drop_rate": 0.155,
+        "severity": "low"
+      },
+      {
+        "from_step": "signup_completed",
+        "to_step": "onboarding_step_viewed",
+        "drop_users": 39,
+        "drop_rate": 0.21,
+        "severity": "medium"
+      },
+      {
+        "from_step": "onboarding_step_viewed",
+        "to_step": "feature_used",
+        "drop_users": 45,
+        "drop_rate": 0.306,
+        "severity": "medium"
+      },
+      {
+        "from_step": "feature_used",
+        "to_step": "activation_completed",
+        "drop_users": 47,
+        "drop_rate": 0.461,
+        "severity": "high"
+      }
+    ],
+    "error_signals": [
+      {
+        "event_name": "error_shown",
+        "affected_users": 21
+      },
+      {
+        "event_name": "session_abandoned",
+        "affected_users": 118
+      }
+    ]
+  },
+  "opportunities": {
+    "headline": "Product opportunity memo (synthetic demo)",
+    "summary": {
+      "product": "BehaviorGraph",
+      "dataset": "synthetic_saas_onboarding",
+      "users": 220,
+      "events": 968,
+      "sessions": 289,
+      "activated_users": 55,
+      "activation_rate": 0.25,
+      "notice": "Demo uses synthetic events only — not production tracking."
+    },
+    "opportunities": [
+      {
+        "title": "Reduce drop feature_used → activation_completed",
+        "why": "Drop rate 46% on the activation path.",
+        "suggested_action": "Simplify the step UX, add progressive disclosure, instrument micro-errors.",
+        "impact_hypothesis": "Improving this transition should lift activation_rate without new acquisition."
+      },
+      {
+        "title": "Close taxonomy gaps before production tracking",
+        "why": "Orphan or inconsistently named events hide journey truth.",
+        "suggested_action": "Enforce event taxonomy ownership and reject unknown events in ingest.",
+        "impact_hypothesis": "Cleaner schema improves funnel and cohort reliability."
+      },
+      {
+        "title": "Protect activated cohort with early habit loops",
+        "why": "Activation rate is 25% in the demo window.",
+        "suggested_action": "Trigger day-1 / day-7 nudges only for activated users with low feature_used density.",
+        "impact_hypothesis": "Retention lift comes from habit, not more signup volume."
+      }
+    ],
+    "limitations": [
+      "Synthetic dataset — not causal proof.",
+      "No production SDK ingest in MVP.",
+      "Path graph is session-local transition counts, not Markov attribution."
+    ]
+  },
+  "recent_events": [
+    {
+      "event_id": "evt_000528",
+      "user_id": "user_0125",
+      "event_name": "invite_sent",
+      "ts": "2026-06-03T07:12:00+00:00",
+      "session_id": "s_0125_02",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000820",
+      "user_id": "user_0186",
+      "event_name": "return_visit",
+      "ts": "2026-06-04T02:00:00+00:00",
+      "session_id": "s_0186_02",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000942",
+      "user_id": "user_0213",
+      "event_name": "return_visit",
+      "ts": "2026-06-04T11:00:00+00:00",
+      "session_id": "s_0213_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000943",
+      "user_id": "user_0213",
+      "event_name": "feature_used",
+      "ts": "2026-06-04T11:04:00+00:00",
+      "session_id": "s_0213_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000375",
+      "user_id": "user_0085",
+      "event_name": "return_visit",
+      "ts": "2026-06-05T02:00:00+00:00",
+      "session_id": "s_0085_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000376",
+      "user_id": "user_0085",
+      "event_name": "feature_used",
+      "ts": "2026-06-05T02:04:00+00:00",
+      "session_id": "s_0085_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000676",
+      "user_id": "user_0153",
+      "event_name": "return_visit",
+      "ts": "2026-06-07T08:00:00+00:00",
+      "session_id": "s_0153_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000677",
+      "user_id": "user_0153",
+      "event_name": "feature_used",
+      "ts": "2026-06-07T08:04:00+00:00",
+      "session_id": "s_0153_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000610",
+      "user_id": "user_0141",
+      "event_name": "return_visit",
+      "ts": "2026-06-08T18:00:00+00:00",
+      "session_id": "s_0141_02",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000611",
+      "user_id": "user_0141",
+      "event_name": "feature_used",
+      "ts": "2026-06-08T18:05:00+00:00",
+      "session_id": "s_0141_02",
+      "properties": "{\"feature\":\"board\"}"
+    },
+    {
+      "event_id": "evt_000612",
+      "user_id": "user_0141",
+      "event_name": "invite_sent",
+      "ts": "2026-06-08T18:12:00+00:00",
+      "session_id": "s_0141_02",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000295",
+      "user_id": "user_0069",
+      "event_name": "return_visit",
+      "ts": "2026-06-09T13:00:00+00:00",
+      "session_id": "s_0069_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000296",
+      "user_id": "user_0069",
+      "event_name": "feature_used",
+      "ts": "2026-06-09T13:04:00+00:00",
+      "session_id": "s_0069_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000854",
+      "user_id": "user_0194",
+      "event_name": "return_visit",
+      "ts": "2026-06-11T19:00:00+00:00",
+      "session_id": "s_0194_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000855",
+      "user_id": "user_0194",
+      "event_name": "feature_used",
+      "ts": "2026-06-11T19:04:00+00:00",
+      "session_id": "s_0194_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000488",
+      "user_id": "user_0115",
+      "event_name": "return_visit",
+      "ts": "2026-06-12T11:00:00+00:00",
+      "session_id": "s_0115_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000489",
+      "user_id": "user_0115",
+      "event_name": "feature_used",
+      "ts": "2026-06-12T11:04:00+00:00",
+      "session_id": "s_0115_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000302",
+      "user_id": "user_0070",
+      "event_name": "return_visit",
+      "ts": "2026-06-13T23:00:00+00:00",
+      "session_id": "s_0070_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000303",
+      "user_id": "user_0070",
+      "event_name": "feature_used",
+      "ts": "2026-06-13T23:04:00+00:00",
+      "session_id": "s_0070_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000821",
+      "user_id": "user_0186",
+      "event_name": "return_visit",
+      "ts": "2026-06-14T21:00:00+00:00",
+      "session_id": "s_0186_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000822",
+      "user_id": "user_0186",
+      "event_name": "feature_used",
+      "ts": "2026-06-14T21:04:00+00:00",
+      "session_id": "s_0186_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000123",
+      "user_id": "user_0029",
+      "event_name": "return_visit",
+      "ts": "2026-06-17T08:00:00+00:00",
+      "session_id": "s_0029_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000124",
+      "user_id": "user_0029",
+      "event_name": "feature_used",
+      "ts": "2026-06-17T08:04:00+00:00",
+      "session_id": "s_0029_03",
+      "properties": "{\"feature\":\"insights\"}"
+    },
+    {
+      "event_id": "evt_000768",
+      "user_id": "user_0175",
+      "event_name": "return_visit",
+      "ts": "2026-06-17T22:00:00+00:00",
+      "session_id": "s_0175_03",
+      "properties": "{}"
+    },
+    {
+      "event_id": "evt_000769",
+      "user_id": "user_0175",
+      "event_name": "feature_used",
+      "ts": "2026-06-17T22:04:00+00:00",
+      "session_id": "s_0175_03",
+      "properties": "{\"feature\":\"insights\"}"
+    }
+  ]
+}

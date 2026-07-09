@@ -47,3 +47,5 @@ Thumbs.db
 .cursor/
 *.duckdb
 *.duckdb.wal
+.gh-pages-tmp/
+BehaviorGraph-gh-pages/

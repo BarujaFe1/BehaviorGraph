@@ -7,6 +7,7 @@
   <p><strong>Turn product events into journeys, funnels, cohorts, friction and adoption signals.</strong></p>
 
   <p>
+    <a href="https://barujafe1.github.io/BehaviorGraph/"><strong>🌐 Live Demo</strong></a> •
     <a href="#-visão-geral--overview">PT-BR / English Overview</a> •
     <a href="#-product-preview">Preview</a> •
     <a href="#-screenshots">Screenshots</a> •
@@ -43,6 +44,12 @@ O projeto foi desenvolvido por **Felipe Alirio Baruja** como peça de portfólio
 
 > **Responsible Product Analytics Notice**  
 > O BehaviorGraph usa dataset sintético no MVP. Ele **não** deve ser tratado como telemetria de produção, atribuição causal automática ou substituto de suites completas de product analytics.
+
+### 🌐 Live Demo
+
+**Demo pública (lab):** [https://barujafe1.github.io/BehaviorGraph/](https://barujafe1.github.io/BehaviorGraph/)
+
+A demo é **frontend-only** com snapshot sintético embutido (taxonomia, funil, cohorts, journey graph, friction e opportunity memo). O projeto Vercel `behaviorgraph` já está linkado para produção quando a cota diária resetar (`https://behaviorgraph.vercel.app`). O FastAPI local continua disponível para o fluxo full-stack via `start.bat`.
 
 ---
 
