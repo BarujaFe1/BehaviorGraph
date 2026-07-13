@@ -49,3 +49,5 @@ Thumbs.db
 *.duckdb.wal
 .gh-pages-tmp/
 BehaviorGraph-gh-pages/
+apps/api/.venv/
+apps/web/out/

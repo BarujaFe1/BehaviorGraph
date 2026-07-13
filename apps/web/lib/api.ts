@@ -7,23 +7,23 @@ import {
   getOpportunities,
   getSegments,
   getTaxonomy,
-  type Cohort,
-  type FrictionPayload,
-  type TaxonomyEvent,
 } from "@/lib/lab";
 import type {
+  Cohort,
   DemoSummary,
+  FrictionPayload,
   FunnelStep,
   JourneyGraph,
   OpportunityMemo,
   Segment,
+  TaxonomyEvent,
 } from "@/types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
 
 /**
  * Prefer optional FastAPI when NEXT_PUBLIC_API_URL is set.
- * Vercel lab demo falls back to the embedded synthetic snapshot.
+ * Static/Vercel lab demo falls back to the embedded synthetic snapshot.
  */
 async function tryBackend<T>(path: string): Promise<T | null> {
   if (!API_URL) return null;

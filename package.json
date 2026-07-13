@@ -1,0 +1,12 @@
+{
+  "name": "behaviorgraph",
+  "private": true,
+  "scripts": {
+    "dev:web": "npm --prefix apps/web run dev",
+    "build:web": "npm --prefix apps/web run build",
+    "lint:web": "npm --prefix apps/web run lint",
+    "typecheck:web": "npm --prefix apps/web run typecheck",
+    "test:api": "apps/api/.venv/Scripts/python -m pytest apps/api/tests -q",
+    "snapshot": "apps/api/.venv/Scripts/python -c \"import json,sys; sys.path.insert(0,'apps/api'); from app.services import analytics as a; from pathlib import Path; snap={'summary':a.load_demo_summary(),'taxonomy':a.load_event_taxonomy(),'funnel':a.build_activation_funnel(),'cohorts':a.build_retention_cohorts(),'journey':a.build_journey_graph(),'segments':a.build_segments(),'friction':a.build_friction_points(),'opportunities':a.build_opportunity_memo(),'recent_events':a.load_recent_events(25)}; Path('apps/web/lib/demo-snapshot.json').write_text(json.dumps(snap,ensure_ascii=False,indent=2),encoding='utf-8'); print('snapshot ok')\""
+  }
+}
