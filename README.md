@@ -3,46 +3,105 @@
 
   <h1>BehaviorGraph</h1>
 
-  <p><strong>Which paths lead to activation, abandonment, or habit?</strong></p>
-  <p>Behavioral analytics lab: event taxonomy → nested funnel → retention cohorts → journey graph → product opportunity memo.</p>
+  <p><strong>Estúdio de analytics comportamental — taxonomia, funis, cohorts, jornadas e memos de oportunidade.</strong></p>
+  <p><strong>Behavioral analytics studio — taxonomy, funnels, cohorts, journeys and opportunity memos.</strong></p>
 
   <p>
-    <a href="https://barujafe1.github.io/BehaviorGraph/"><strong>🌐 Live Demo</strong></a> •
-    <a href="#problem">Problem</a> •
-    <a href="#solution">Solution</a> •
-    <a href="#architecture">Architecture</a> •
-    <a href="#quick-start">Quick Start</a> •
-    <a href="#what-this-project-demonstrates">Portfolio value</a>
+    <a href="#pt-br">PT-BR</a> ·
+    <a href="#en">English</a> ·
+    <a href="#live-demo">Live Demo</a> ·
+    <a href="#stack--tecnologias">Stack</a> ·
+    <a href="#arquitetura--architecture">Architecture</a> ·
+    <a href="#quick-start--início-rápido">Quick Start</a> ·
+    <a href="#autor--author">Author</a>
   </p>
 
   <p>
+    <a href="https://barujafe1.github.io/BehaviorGraph/"><img alt="Live Demo" src="https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
     <img alt="Next.js" src="https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=nextdotjs" />
     <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-React-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-    <img alt="Python" src="https://img.shields.io/badge/Python-Analytics-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+    <img alt="Python" src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" />
     <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-API-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
     <img alt="NetworkX" src="https://img.shields.io/badge/NetworkX-Journey%20Graph-FF6F61?style=for-the-badge" />
-    <img alt="Responsible Analytics" src="https://img.shields.io/badge/Responsible-Analytics-22C55E?style=for-the-badge" />
+    <img alt="Lab Demo" src="https://img.shields.io/badge/Status-Lab%20demo-2563EB?style=for-the-badge" />
+    <img alt="MIT" src="https://img.shields.io/badge/License-MIT-111827?style=for-the-badge" />
+  </p>
+
+  <p>
+    <a href="https://barujafe1.github.io/BehaviorGraph/"><strong>Live Demo</strong></a> ·
+    <a href="https://github.com/BarujaFe1/BehaviorGraph"><strong>Repositório</strong></a> ·
+    <a href="https://barujafe.vercel.app/"><strong>Portfólio</strong></a> ·
+    <a href="https://www.linkedin.com/in/barujafe/"><strong>LinkedIn</strong></a>
   </p>
 </div>
 
 <p align="center">
-  <img src="./assets/hero-cover.png" alt="BehaviorGraph product overview" width="100%" />
+  <img src="./assets/hero-cover.png" alt="BehaviorGraph overview" width="100%" />
 </p>
 
 ---
 
-## Status
+<a id="pt-br"></a>
 
-| Item | State |
+## PT-BR
+
+## Visão geral
+
+**BehaviorGraph** conecta taxonomia de eventos, funis de ativação, cohorts de retenção, grafos de jornada e memos de oportunidade de produto em um estúdio analítico de lab.
+
+> **Aviso de lab:** demo de portfólio com dados sintéticos. Não é produto em produção com SLA, tracking real de usuários ou atribuição causal.
+
+| Item | Estado |
 |---|---|
-| Scope | Portfolio lab / MVP (synthetic seed) |
+| Escopo | Portfolio lab / MVP (seed sintética) |
 | Live Demo | [barujafe1.github.io/BehaviorGraph](https://barujafe1.github.io/BehaviorGraph/) |
-| Repo homepage | configured |
 | CI | GitHub Actions (API + Web) |
-| Production tracking | **Out of scope** |
+| Tracking de produção | **Fora do escopo** |
 
-> **Responsible Product Analytics Notice**  
-> Synthetic SaaS onboarding events only. Not production telemetry, not Mixpanel, and not causal attribution from path graphs.
+---
+
+## Problema
+
+Produtos digitais coletam eventos, mas times ainda lutam para responder:
+
+- Quais passos de ativação perdem usuários?
+- Quais transições de sessão dominam?
+- Quais cohorts retêm depois da semana 0?
+- Onde o atrito é alto o suficiente para merecer uma aposta de produto?
+
+Métricas de vaidade (“quantos se cadastraram?”) escondem o caminho.
+
+---
+
+## Funcionalidades
+
+- Taxonomia de eventos como contrato com owner
+- Funil de ativação aninhado (usuários únicos que permanecem dos passos anteriores)
+- Cohorts de retenção por primeira semana vista (offsets W0–W4 reais)
+- Grafo de jornada (transições de sessão via NetworkX)
+- Segmentos + radar de atrito com severidade (`low` / `medium` / `high`)
+- Memo de oportunidade (ação + hipótese de impacto + limites)
+- Snapshot estático para demos públicas confiáveis
+- Backend FastAPI opcional para execução full-stack local
+
+---
+
+## Escopo e limites
+
+- **É:** estúdio lab de behavioral analytics.
+- **Não é:** clone de Amplitude/Mixpanel, CDP, SDK de tracking de produção, ferramenta causal.
+
+---
+
+<a id="en"></a>
+
+## English
+
+## Overview
+
+**BehaviorGraph** connects event taxonomy, activation funnels, retention cohorts, journey graphs and product opportunity memos in one analytics studio lab.
+
+> **Lab notice:** portfolio demo with synthetic data only. Not production telemetry, not Mixpanel, and not causal attribution.
 
 ---
 
@@ -59,59 +118,35 @@ Conversion vanity metrics (“how many signed up?”) hide the path.
 
 ---
 
-## Solution
-
-**BehaviorGraph** converts a synthetic event stream into a product narrative:
-
-1. **Event taxonomy** — owned contract (name, category, owner)
-2. **Nested activation funnel** — unique users remaining in prior steps
-3. **Retention cohorts** — first-seen week with true W0–W4 offsets
-4. **Journey graph** — NetworkX session transitions
-5. **Segments + friction radar** — activated / at-risk / power + drop severity
-6. **Opportunity memo** — hypotheses with explicit limitations
-
----
-
 ## Core features
 
-- Taxonomy center for instrumentation discussions
+- Event taxonomy as an owned contract
 - Nested unique-user activation funnel (+ conversion from start)
-- Retention cohort heat matrix
-- Journey path edges with weights
-- Friction severity bands (`low` / `medium` / `high`)
-- Product opportunity memo (action + impact hypothesis + limits)
+- Retention cohorts with true W0–W4 offsets
+- Journey graph edges with weights (NetworkX)
+- Segments + friction severity bands
+- Opportunity memo (action + impact hypothesis + limits)
 - Static lab snapshot for reliable public demos
 - Optional FastAPI backend for local full-stack runs
 
 ---
 
-## Architecture
+## Scope and limits
 
-```text
-CSV seed → FastAPI analytics (Pandas/NetworkX/Pydantic)
-                 ↓
-        demo-snapshot.json (static)
-                 ↓
-     Next.js cockpit (Recharts + matrix)
-```
-
-Details: [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) · decisions: [docs/TECHNICAL_DECISIONS.md](./docs/TECHNICAL_DECISIONS.md)
-
-<p align="center">
-  <img src="./assets/architecture-pipeline.png" alt="BehaviorGraph architecture" width="100%" />
-</p>
+- **Is:** behavioral analytics studio lab.
+- **Is not:** Amplitude/Mixpanel clone, CDP, production tracking SDK, causal tool.
 
 ---
 
-## Stack
+<a id="live-demo"></a>
 
-| Layer | Choices |
-|---|---|
-| Frontend | Next.js 15, React 19, TypeScript, Recharts |
-| Backend | FastAPI, Pydantic v2, Pandas, NetworkX |
-| Data | Synthetic CSV seed (`data/seed`) |
-| Quality | Pytest, Ruff, ESLint, `tsc`, GitHub Actions |
-| Hosting | GitHub Pages (live) + Vercel-ready static export |
+## Live Demo
+
+**URL:** [https://barujafe1.github.io/BehaviorGraph/](https://barujafe1.github.io/BehaviorGraph/)
+
+Demo hospedada para avaliação de portfólio / Hosted for portfolio review.
+
+> Lab demo — synthetic data only. Not a production SLA product.
 
 ---
 
@@ -142,44 +177,88 @@ Details: [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) · decisions: [docs/TECH
 
 ---
 
-## Quick Start
+<a id="stack--tecnologias"></a>
 
-### Prerequisites
+## Stack / Tecnologias
+
+| Tecnologia | Uso no projeto |
+|---|---|
+| Next.js 15 / React 19 / TypeScript | UI + export estático |
+| Recharts | Charts |
+| FastAPI / Pydantic v2 / Pandas / NetworkX | Analytics API |
+| Pytest / Ruff / ESLint / tsc / GitHub Actions | Qualidade |
+
+---
+
+<a id="arquitetura--architecture"></a>
+
+## Arquitetura / Architecture
+
+```text
+CSV seed → FastAPI analytics (Pandas/NetworkX/Pydantic)
+                 ↓
+         demo-snapshot.json (static)
+                 ↓
+     Next.js cockpit (Recharts)
+```
+
+Details: [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) · decisions: [docs/TECHNICAL_DECISIONS.md](./docs/TECHNICAL_DECISIONS.md)
+
+<p align="center">
+  <img src="./assets/architecture-pipeline.png" alt="BehaviorGraph architecture" width="100%" />
+</p>
+
+---
+
+<a id="quick-start--início-rápido"></a>
+
+## Quick Start / Início rápido
+
+### Pré-requisitos / Requirements
+
 - Node.js 20+
-- Python 3.12 recommended
-- Git
+- Python 3.12+
+- npm
 
-### Option A — Windows one-click
-```bash
+### Windows (atalho)
+
+```bat
 start.bat
 ```
 
-### Option B — Static web lab only
+Sobe API em :8000 e web em :3000.
+
+### Static web lab only
+
 ```bash
 cd apps/web
 npm install
 npm run dev
 ```
+
 Open [http://localhost:3000](http://localhost:3000) — uses embedded snapshot (no API required).
 
-### Option C — Full-stack local
+### Full-stack manual
+
 ```bash
 # API
 cd apps/api
 python -m venv .venv
-.venv\Scripts\activate          # Windows
-# source .venv/bin/activate     # Linux/macOS
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 
-# Web (new terminal)
+# Web (outro terminal / another terminal)
 cd apps/web
-# set NEXT_PUBLIC_API_URL=http://127.0.0.1:8000 in .env.local
 npm install
 npm run dev
 ```
 
+Abra http://localhost:3000
+
 ### Environment variables
+
 See [`.env.example`](./.env.example) and [`apps/web/.env.example`](./apps/web/.env.example).
 
 | Variable | Purpose |
@@ -223,11 +302,11 @@ More: [docs/TESTING.md](./docs/TESTING.md) · Deploy: [docs/DEPLOYMENT.md](./doc
 
 ## Roadmap
 
-- **MVP (now):** taxonomy, nested funnel, cohorts, graph, friction, memo, static demo, CI
-- **Phase 2:** orphan events, sequence analysis, behavioral cohorts, activation alerts
-- **Phase 3:** minimal SDK, near-real-time ingest, experiment tags, product Q&A assistant
+- **MVP (done):** taxonomy, nested funnel, cohorts, graph, friction, memo, static demo, CI
+- **Phase 2 (in progress):** release intelligence — tracking contracts, instrumentation validator, raw vs trusted funnel comparison per release
+- **Phase 3:** minimal SDK, near-real-time ingest, experiment tags
 
-Non-goals: Mixpanel clone, generic metrics dashboard, production tracking in MVP.
+Non-goals: Mixpanel clone, generic metrics dashboard, production tracking.
 
 ---
 
@@ -239,30 +318,33 @@ Non-goals: Mixpanel clone, generic metrics dashboard, production tracking in MVP
 - Responsible analytics communication (limits stated in UI + docs)
 - Engineering hygiene (Pydantic contracts, tests, CI, deploy docs)
 
----
-
-## How I would present this in an interview
-
-1. **Hook (20s):** “Conversion asks *how many*; BehaviorGraph asks *which paths*.”
-2. **Taxonomy (40s):** Show owned events as a product contract.
-3. **Funnel (60s):** Explain nested unique users and the largest drop.
-4. **Cohorts (40s):** First-seen week + W1 retention — why offset math matters.
-5. **Journey + friction (40s):** Transitions as exploration, not causation.
-6. **Memo (40s):** Turn drops into hypotheses with limitations.
-7. **Close (20s):** Lab scope honesty — what I’d build next vs what I refuse to overclaim.
-
 Pitch notes: [docs/portfolio_pitch.md](./docs/portfolio_pitch.md)
 
 ---
 
-## Author
+<a id="autor--author"></a>
 
-**Felipe Alirio Baruja**
+## Autor / Author
 
-- Portfolio: [barujafe.vercel.app](https://barujafe.vercel.app/)
-- GitHub: [@BarujaFe1](https://github.com/BarujaFe1)
-- LinkedIn: [Gustavo Felipe Alirio Baruja](https://www.linkedin.com/in/barujafe/)
+Developed by **Felipe Alirio Baruja**.
 
-## License
+- **Portfolio:** [https://barujafe.vercel.app/](https://barujafe.vercel.app/)
+- **GitHub:** [github.com/BarujaFe1](https://github.com/BarujaFe1)
+- **LinkedIn:** [linkedin.com/in/barujafe](https://www.linkedin.com/in/barujafe/)
+- **Repository:** [github.com/BarujaFe1/BehaviorGraph](https://github.com/BarujaFe1/BehaviorGraph)
 
-MIT License © 2026 Felipe Alirio Baruja
+---
+
+## License / Licença
+
+MIT License © 2026 Felipe Alirio Baruja.
+
+See [LICENSE](./LICENSE) for details.
+
+---
+
+<div align="center">
+  <p><strong>BehaviorGraph</strong></p>
+  <p>De eventos brutos a oportunidades de produto.</p>
+  <p><em>From raw events to product opportunities.</em></p>
+</div>
