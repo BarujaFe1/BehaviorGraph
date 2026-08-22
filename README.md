@@ -86,6 +86,28 @@ Métricas de vaidade (“quantos se cadastraram?”) escondem o caminho.
 
 ---
 
+## Release Intelligence
+
+Depois de uma release, o funil “melhora”. Mas foi o produto ou a instrumentação?
+
+O lab agora valida **contratos de tracking** antes de comparar releases:
+
+- `data/contracts/events.yml` — contrato versionado por evento (owner, props obrigatórias, ordem, cardinalidade, versão)
+- Validador determinístico: missing props, order violations, duplicate `insert_id`, cardinality, unknown events e event drift
+- Comparação **raw vs trusted** por usuário único com veredito explícito
+- Intervalos de confiança de Wilson; linguagem estritamente observacional
+
+Golden scenario (fixtures sintéticas determinísticas):
+
+```text
+v2.3.0-buggy  raw onboarding_completed  +24.3%  →  trusted −0.9%   ⇒ artefato de instrumentação
+v2.3.0-fixed  activation_completed      +9.1%   →  trusted +9.1%   ⇒ melhora real
+```
+
+Demo: [`/releases`](https://barujafe1.github.io/BehaviorGraph/releases/) · Método: [docs/RELEASE_INTELLIGENCE_METHOD.md](./docs/RELEASE_INTELLIGENCE_METHOD.md)
+
+---
+
 ## Escopo e limites
 
 - **É:** estúdio lab de behavioral analytics.
@@ -128,6 +150,28 @@ Conversion vanity metrics (“how many signed up?”) hide the path.
 - Opportunity memo (action + impact hypothesis + limits)
 - Static lab snapshot for reliable public demos
 - Optional FastAPI backend for local full-stack runs
+
+---
+
+## Release Intelligence
+
+After a release, the funnel “improves”. But was it the product — or the instrumentation?
+
+The lab now validates **tracking contracts** before comparing releases:
+
+- `data/contracts/events.yml` — versioned per-event contract (owner, required props, sequence, cardinality, introduced-in)
+- Deterministic validator: missing props, order violations, duplicate `insert_id`, cardinality, unknown events and event drift
+- **Raw vs trusted** comparison on unique users with an explicit verdict
+- Wilson confidence intervals; strictly observational language
+
+Golden scenario (deterministic synthetic fixtures):
+
+```text
+v2.3.0-buggy  raw onboarding_completed  +24.3%  →  trusted −0.9%   ⇒ instrumentation artifact
+v2.3.0-fixed  activation_completed      +9.1%   →  trusted +9.1%   ⇒ real improvement
+```
+
+Demo: [`/releases`](https://barujafe1.github.io/BehaviorGraph/releases/) · Method: [docs/RELEASE_INTELLIGENCE_METHOD.md](./docs/RELEASE_INTELLIGENCE_METHOD.md)
 
 ---
 
@@ -303,8 +347,8 @@ More: [docs/TESTING.md](./docs/TESTING.md) · Deploy: [docs/DEPLOYMENT.md](./doc
 ## Roadmap
 
 - **MVP (done):** taxonomy, nested funnel, cohorts, graph, friction, memo, static demo, CI
-- **Phase 2 (in progress):** release intelligence — tracking contracts, instrumentation validator, raw vs trusted funnel comparison per release
-- **Phase 3:** minimal SDK, near-real-time ingest, experiment tags
+- **Phase 2 (done):** release intelligence — tracking contracts, instrumentation validator, raw vs trusted funnel comparison per release
+- **Phase 3 (planned):** minimal SDK, near-real-time ingest, experiment tags
 
 Non-goals: Mixpanel clone, generic metrics dashboard, production tracking.
 

@@ -145,7 +145,6 @@ export type ReleaseIntelligence = {
   method: string;
   baseline: string;
   observational_notice: string;
-  generated_at: string;
   releases: ReleaseOverviewEntry[];
   instrumentation: Record<string, ReleaseInstrumentation>;
   journey_diffs: Record<string, JourneyDiff>;

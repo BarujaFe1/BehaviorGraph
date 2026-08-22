@@ -8,6 +8,9 @@ GitHub Pages serves the static Next export from branch `gh-pages` with `basePath
 ### Rebuild Pages payload
 
 ```bash
+# 1) regenerate the release-intelligence snapshot from backend services
+python scripts/generate_release_snapshot.py
+
 cd apps/web
 set GITHUB_PAGES=true   # Windows PowerShell: $env:GITHUB_PAGES="true"
 npm run build

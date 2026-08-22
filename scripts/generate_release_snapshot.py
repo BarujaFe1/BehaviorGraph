@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import json
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +53,6 @@ def build_payload() -> dict:
         )
     return {
         **overview,
-        "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "instrumentation": instrumentation,
         "journey_diffs": journey_diffs,
         "limitations": [

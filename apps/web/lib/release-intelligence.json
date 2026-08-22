@@ -1,6 +1,5 @@
 {
   "baseline": "v2.2.0-healthy",
-  "generated_at": "2026-08-22T19:02:11.697023Z",
   "instrumentation": {
     "v2.2.0-healthy": {
       "release": "v2.2.0-healthy",
