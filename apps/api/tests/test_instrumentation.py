@@ -10,6 +10,7 @@ import pytest
 from app.services.instrumentation import (
     InstrumentationViolation,
     load_tracking_contract,
+    validate_release,
 )
 
 
@@ -131,3 +132,70 @@ def _premature_onboarding_users(frame: pd.DataFrame) -> set[str]:
             if "profile_saved" not in prior:
                 offenders.add(str(session["user_id"].iloc[0]))
     return offenders
+
+
+class TestInstrumentationValidator:
+    """Phase 4 — golden scenarios G1..G4 and G6."""
+
+    @staticmethod
+    def _codes(report) -> dict[tuple[str, str], InstrumentationViolation]:
+        return {(v.code, v.event_name): v for v in report.violations}
+
+    def test_g1_healthy_release_passes_contracts(self) -> None:
+        report = validate_release("v2.2.0-healthy")
+        assert report.status == "pass"
+        assert report.violations == ()
+
+    def test_g2_buggy_release_blocks_on_order_violation(self) -> None:
+        report = validate_release("v2.3.0-buggy")
+        violation = self._codes(report)[("order_violation", "onboarding_completed")]
+        assert violation.severity == "block"
+        assert violation.user_count >= 20
+        assert violation.evidence_count >= 20
+
+    def test_g4_buggy_release_detects_duplicate_insert_ids(self) -> None:
+        report = validate_release("v2.3.0-buggy")
+        violation = next(v for v in report.violations if v.code == "duplicate_insert_id")
+        assert violation.severity == "block"
+        assert violation.evidence_count > 0
+
+    def test_g6_unknown_event_warns_without_silent_drop(self) -> None:
+        report = validate_release("v2.3.0-buggy")
+        assert "upsell_modal_shown" in report.unknown_events
+        warning = next(
+            v
+            for v in report.violations
+            if v.code == "unknown_event" and v.event_name == "upsell_modal_shown"
+        )
+        assert warning.severity == "warning"
+
+    def test_buggy_release_reports_missing_required_property(self) -> None:
+        report = validate_release("v2.3.0-buggy")
+        violation = self._codes(report)[
+            ("missing_required_property", "onboarding_completed")
+        ]
+        assert violation.severity == "block"
+        assert violation.user_count >= 20
+
+    def test_event_drift_flags_premature_completion_spike(self) -> None:
+        report = validate_release("v2.3.0-buggy")
+        assert ("event_drift", "onboarding_completed") in self._codes(report)
+
+    def test_fixed_release_has_no_block_violations(self) -> None:
+        report = validate_release("v2.3.0-fixed")
+        assert all(v.severity != "block" for v in report.violations)
+
+    def test_trusted_view_shrinks_buggy_but_keeps_healthy_stable(self) -> None:
+        healthy = validate_release("v2.2.0-healthy")
+        buggy = validate_release("v2.3.0-buggy")
+        assert buggy.trusted_events < buggy.total_events
+        assert healthy.trusted_events <= healthy.total_events
+        assert buggy.trusted_events / buggy.total_events < 0.99
+
+    def test_report_is_deterministic_and_sorted(self) -> None:
+        first = validate_release("v2.3.0-buggy")
+        second = validate_release("v2.3.0-buggy")
+        assert first == second
+        ranks = {"block": 0, "warning": 1}
+        keys = [(ranks[v.severity], v.code, v.event_name) for v in first.violations]
+        assert keys == sorted(keys)
