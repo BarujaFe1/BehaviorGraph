@@ -199,3 +199,30 @@ class TestInstrumentationValidator:
         ranks = {"block": 0, "warning": 1}
         keys = [(ranks[v.severity], v.code, v.event_name) for v in first.violations]
         assert keys == sorted(keys)
+
+    def test_cardinality_counts_distinct_events_after_dedup(self) -> None:
+        """A reused insert_id is ONE logical event — duplicates must not
+        double-report as cardinality breaches."""
+        import pandas as pd
+
+        from app.services.instrumentation import _cardinality_rows
+
+        frame = pd.DataFrame(
+            [
+                {
+                    "user_id": "u_1",
+                    "session_id": "s",
+                    "event_name": "onboarding_completed",
+                    "ts": f"2026-06-08T10:0{minute}:00Z",
+                    "event_id": f"e{i}",
+                    "insert_id": insert_id,
+                    "properties": "{}",
+                }
+                for i, (minute, insert_id) in enumerate(
+                    [(0, "ins_a"), (1, "ins_b"), (2, "ins_a")]
+                )
+            ]
+        )
+        flagged = list(_cardinality_rows(frame))
+        expected = frame.index[frame["insert_id"] == "ins_b"].tolist()
+        assert flagged == expected

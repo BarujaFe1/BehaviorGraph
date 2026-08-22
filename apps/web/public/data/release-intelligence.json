@@ -19,34 +19,6 @@
       ],
       "violations": [
         {
-          "code": "cardinality_breach",
-          "event_name": "activation_completed",
-          "evidence_count": 3,
-          "severity": "block",
-          "user_count": 3
-        },
-        {
-          "code": "cardinality_breach",
-          "event_name": "onboarding_completed",
-          "evidence_count": 12,
-          "severity": "block",
-          "user_count": 12
-        },
-        {
-          "code": "cardinality_breach",
-          "event_name": "profile_saved",
-          "evidence_count": 7,
-          "severity": "block",
-          "user_count": 7
-        },
-        {
-          "code": "cardinality_breach",
-          "event_name": "signup_completed",
-          "evidence_count": 14,
-          "severity": "block",
-          "user_count": 14
-        },
-        {
           "code": "duplicate_insert_id",
           "event_name": "signup_completed",
           "evidence_count": 74,

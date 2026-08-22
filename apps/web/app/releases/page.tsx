@@ -23,6 +23,8 @@ export default function ReleasesPage() {
 
   useEffect(() => {
     let active = true;
+    const requested = new URLSearchParams(window.location.search).get("release");
+    if (requested) setSelected(requested);
     fetchReleaseIntelligence()
       .then((payload) => {
         if (active) setData(payload);

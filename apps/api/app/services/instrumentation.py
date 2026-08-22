@@ -176,9 +176,16 @@ def _duplicate_insert_rows(frame: pd.DataFrame) -> tuple[pd.Index, int]:
 
 
 def _cardinality_rows(frame: pd.DataFrame) -> pd.Index:
+    """Excess occurrences of an event within one user session.
+
+    Counts DISTINCT logical events: duplicate insert_id rows are deduped
+    first so one client retry is never double-reported as a breach.
+    """
     contract = load_tracking_contract()
+    dup_idx, _ = _duplicate_insert_rows(frame)
+    deduped = frame.drop(index=dup_idx)
     offenders: list[int] = []
-    grouped = frame.groupby(["user_id", "session_id", "event_name"], sort=False)
+    grouped = deduped.groupby(["user_id", "session_id", "event_name"], sort=False)
     for (_, _, event_name), group in grouped:
         spec = contract.events.get(str(event_name))
         if spec is None or spec.max_per_user_session is None:
