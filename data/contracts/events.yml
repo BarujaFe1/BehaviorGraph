@@ -1,0 +1,64 @@
+# BehaviorGraph tracking contracts — source of truth for instrumentation health.
+# Every declared event must carry an owner and its required properties.
+# must_follow enforces session-order prerequisites; violations are BLOCK severity.
+# Events not declared here are reported as unknown_event warnings, never silently dropped.
+version: 1
+
+events:
+  signup_started:
+    owner: growth
+    required_properties: [user_id, session_id, insert_id, release]
+    introduced_in: "2.0.0"
+
+  signup_completed:
+    owner: growth
+    required_properties: [user_id, session_id, insert_id, release]
+    must_follow: [signup_started]
+    max_per_user_session: 1
+    introduced_in: "2.0.0"
+
+  profile_saved:
+    owner: growth
+    required_properties: [user_id, session_id, insert_id, release]
+    must_follow: [signup_completed]
+    max_per_user_session: 1
+    introduced_in: "2.0.0"
+
+  onboarding_step_viewed:
+    owner: product
+    required_properties: [user_id, session_id, insert_id, release]
+    must_follow: [signup_completed]
+    introduced_in: "2.0.0"
+
+  onboarding_completed:
+    owner: growth
+    required_properties: [user_id, session_id, insert_id, release, completed_at]
+    must_follow: [profile_saved]
+    max_per_user_session: 1
+    introduced_in: "2.1.0"
+
+  activation_completed:
+    owner: product
+    required_properties: [user_id, session_id, insert_id, release]
+    max_per_user_session: 1
+    introduced_in: "2.0.0"
+
+  feature_used:
+    owner: product
+    required_properties: [user_id, session_id, insert_id, release, feature]
+    introduced_in: "2.0.0"
+
+  session_abandoned:
+    owner: product
+    required_properties: [user_id, session_id, insert_id, release]
+    introduced_in: "2.0.0"
+
+  error_shown:
+    owner: engineering
+    required_properties: [user_id, session_id, insert_id, release, code]
+    introduced_in: "2.0.0"
+
+  return_visit:
+    owner: product
+    required_properties: [user_id, session_id, insert_id, release]
+    introduced_in: "2.0.0"

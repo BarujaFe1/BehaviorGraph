@@ -1,7 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import cohorts, demo, events, friction, funnel, health, journeys, segments
+from app.api import (
+    cohorts,
+    demo,
+    events,
+    friction,
+    funnel,
+    health,
+    journeys,
+    releases,
+    segments,
+)
 
 app = FastAPI(
     title="BehaviorGraph API",
@@ -31,3 +41,4 @@ app.include_router(cohorts.router, prefix="/api")
 app.include_router(journeys.router, prefix="/api")
 app.include_router(segments.router, prefix="/api")
 app.include_router(friction.router, prefix="/api")
+app.include_router(releases.router, prefix="/api")

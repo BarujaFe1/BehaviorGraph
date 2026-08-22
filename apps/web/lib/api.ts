@@ -25,7 +25,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
  * Prefer optional FastAPI when NEXT_PUBLIC_API_URL is set.
  * Static/Vercel lab demo falls back to the embedded synthetic snapshot.
  */
-async function tryBackend<T>(path: string): Promise<T | null> {
+export async function tryBackend<T>(path: string): Promise<T | null> {
   if (!API_URL) return null;
   try {
     const response = await fetch(`${API_URL}${path}`, { cache: "no-store" });

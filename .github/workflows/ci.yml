@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, "chore/**"]
+    branches: [main, "chore/**", "feat/**"]
   pull_request:
 
 jobs:
@@ -25,8 +25,10 @@ jobs:
           pip install -r requirements.txt
       - name: Ruff
         run: ruff check app tests
-      - name: Pytest
+      - name: Unit + integration tests
         run: pytest -q
+      - name: Golden scenarios (G1–G6)
+        run: pytest -q tests/test_instrumentation.py tests/test_release_compare.py -k "g1 or g2 or g3 or g4 or g5 or g6"
 
   web:
     name: Web (lint + typecheck + build)
@@ -51,3 +53,29 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: "false"
+
+  release-state:
+    name: Release state (snapshot + secret scan)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install API deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r apps/api/requirements.txt
+      - name: Regenerate snapshot and require byte-identical output
+        run: python scripts/generate_release_snapshot.py && git diff --exit-code -- apps/web/public/data/release-intelligence.json apps/web/lib/release-intelligence.json
+      - name: Snapshot payload sanity
+        run: python -c "import json;d=json.load(open('apps/web/public/data/release-intelligence.json'));assert d['baseline']=='v2.2.0-healthy';assert len(d['releases'])==3;assert 'instrumentation' in d and 'journey_diffs' in d"
+      - name: Secret scan (current tree)
+        shell: bash
+        run: |
+          ! grep -rInE 'AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{36}|gho_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{22,}|sk-[A-Za-z0-9_-]{20,}|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----' \
+            --exclude-dir=node_modules --exclude-dir=.venv --exclude-dir=out --exclude-dir=.next .
+      - name: PII scan on fixtures and docs
+        shell: bash
+        run: |
+          ! grep -rInE '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' data/seed/releases docs/RELEASE_INTELLIGENCE_METHOD.md
