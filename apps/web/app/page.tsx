@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
 import { CohortMatrix } from "@/components/CohortMatrix";
 import { FunnelChart } from "@/components/FunnelChart";
@@ -97,6 +98,9 @@ export default function HomePage() {
           lead to activation, abandonment or recurring use.
         </p>
         <div className="badge-row" role="list">
+          <span className="badge" role="listitem">
+            <Link href="/releases">Release Intelligence — new</Link>
+          </span>
           <span className="badge" role="listitem">
             Synthetic seed
           </span>

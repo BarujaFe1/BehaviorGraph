@@ -1,0 +1,519 @@
+{
+  "baseline": "v2.2.0-healthy",
+  "generated_at": "2026-08-22T19:02:11.697023Z",
+  "instrumentation": {
+    "v2.2.0-healthy": {
+      "release": "v2.2.0-healthy",
+      "status": "pass",
+      "total_events": 4080,
+      "trusted_events": 4080,
+      "unknown_events": [],
+      "violations": []
+    },
+    "v2.3.0-buggy": {
+      "release": "v2.3.0-buggy",
+      "status": "block",
+      "total_events": 4336,
+      "trusted_events": 4155,
+      "unknown_events": [
+        "upsell_modal_shown"
+      ],
+      "violations": [
+        {
+          "code": "cardinality_breach",
+          "event_name": "activation_completed",
+          "evidence_count": 3,
+          "severity": "block",
+          "user_count": 3
+        },
+        {
+          "code": "cardinality_breach",
+          "event_name": "onboarding_completed",
+          "evidence_count": 12,
+          "severity": "block",
+          "user_count": 12
+        },
+        {
+          "code": "cardinality_breach",
+          "event_name": "profile_saved",
+          "evidence_count": 7,
+          "severity": "block",
+          "user_count": 7
+        },
+        {
+          "code": "cardinality_breach",
+          "event_name": "signup_completed",
+          "evidence_count": 14,
+          "severity": "block",
+          "user_count": 14
+        },
+        {
+          "code": "duplicate_insert_id",
+          "event_name": "signup_completed",
+          "evidence_count": 74,
+          "severity": "block",
+          "user_count": 70
+        },
+        {
+          "code": "missing_required_property",
+          "event_name": "onboarding_completed",
+          "evidence_count": 111,
+          "severity": "block",
+          "user_count": 107
+        },
+        {
+          "code": "order_violation",
+          "event_name": "onboarding_completed",
+          "evidence_count": 111,
+          "severity": "block",
+          "user_count": 107
+        },
+        {
+          "code": "event_drift",
+          "event_name": "onboarding_completed",
+          "evidence_count": 538,
+          "severity": "warning",
+          "user_count": 526
+        },
+        {
+          "code": "unknown_event",
+          "event_name": "upsell_modal_shown",
+          "evidence_count": 38,
+          "severity": "warning",
+          "user_count": 38
+        }
+      ]
+    },
+    "v2.3.0-fixed": {
+      "release": "v2.3.0-fixed",
+      "status": "pass",
+      "total_events": 4059,
+      "trusted_events": 4059,
+      "unknown_events": [],
+      "violations": []
+    }
+  },
+  "journey_diffs": {
+    "v2.3.0-buggy": {
+      "added": [
+        {
+          "source": "onboarding_completed",
+          "target": "session_abandoned",
+          "target_weight": 107
+        },
+        {
+          "source": "signup_completed",
+          "target": "onboarding_completed",
+          "target_weight": 96
+        },
+        {
+          "source": "signup_completed",
+          "target": "upsell_modal_shown",
+          "target_weight": 38
+        },
+        {
+          "source": "upsell_modal_shown",
+          "target": "profile_saved",
+          "target_weight": 22
+        }
+      ],
+      "baseline": "v2.2.0-healthy",
+      "baseline_edges": [
+        [
+          "error_shown",
+          "onboarding_step_viewed"
+        ],
+        [
+          "feature_used",
+          "onboarding_completed"
+        ],
+        [
+          "onboarding_completed",
+          "activation_completed"
+        ],
+        [
+          "onboarding_step_viewed",
+          "feature_used"
+        ],
+        [
+          "onboarding_step_viewed",
+          "onboarding_completed"
+        ],
+        [
+          "profile_saved",
+          "error_shown"
+        ],
+        [
+          "profile_saved",
+          "feature_used"
+        ],
+        [
+          "profile_saved",
+          "onboarding_completed"
+        ],
+        [
+          "profile_saved",
+          "onboarding_step_viewed"
+        ],
+        [
+          "return_visit",
+          "feature_used"
+        ],
+        [
+          "signup_completed",
+          "profile_saved"
+        ],
+        [
+          "signup_completed",
+          "session_abandoned"
+        ],
+        [
+          "signup_started",
+          "session_abandoned"
+        ],
+        [
+          "signup_started",
+          "signup_completed"
+        ]
+      ],
+      "min_support": 20,
+      "notice": "Observational edge diff between release journey graphs. New edges show where tracking or behavior changed; they never prove causation.",
+      "removed": [],
+      "target": "v2.3.0-buggy"
+    },
+    "v2.3.0-fixed": {
+      "added": [],
+      "baseline": "v2.2.0-healthy",
+      "baseline_edges": [
+        [
+          "error_shown",
+          "onboarding_step_viewed"
+        ],
+        [
+          "feature_used",
+          "onboarding_completed"
+        ],
+        [
+          "onboarding_completed",
+          "activation_completed"
+        ],
+        [
+          "onboarding_step_viewed",
+          "feature_used"
+        ],
+        [
+          "onboarding_step_viewed",
+          "onboarding_completed"
+        ],
+        [
+          "profile_saved",
+          "error_shown"
+        ],
+        [
+          "profile_saved",
+          "feature_used"
+        ],
+        [
+          "profile_saved",
+          "onboarding_completed"
+        ],
+        [
+          "profile_saved",
+          "onboarding_step_viewed"
+        ],
+        [
+          "return_visit",
+          "feature_used"
+        ],
+        [
+          "signup_completed",
+          "profile_saved"
+        ],
+        [
+          "signup_completed",
+          "session_abandoned"
+        ],
+        [
+          "signup_started",
+          "session_abandoned"
+        ],
+        [
+          "signup_started",
+          "signup_completed"
+        ]
+      ],
+      "min_support": 20,
+      "notice": "Observational edge diff between release journey graphs. New edges show where tracking or behavior changed; they never prove causation.",
+      "removed": [
+        {
+          "baseline_weight": 25,
+          "source": "profile_saved",
+          "target": "onboarding_completed"
+        }
+      ],
+      "target": "v2.3.0-fixed"
+    }
+  },
+  "limitations": [
+    "Synthetic fixtures only \u2014 no real user tracking, no PII.",
+    "Rates are observational; no causal effect without an experiment flag.",
+    "Trusted funnel drops contract-invalid rows; unknown events are reported, never silently dropped.",
+    "Event drift compares per-user rates against the baseline release (heuristic threshold)."
+  ],
+  "method": "unique_user_funnel",
+  "observational_notice": "Observational comparison only. Rates describe what fired per unique user; no causal effect is claimed without a controlled experiment.",
+  "releases": [
+    {
+      "activation_raw_rate": 0.275,
+      "activation_trusted_ci": [
+        0.2452,
+        0.307
+      ],
+      "activation_trusted_rate": 0.275,
+      "instrumentation_status": "pass",
+      "raw_funnel": [
+        {
+          "conversion_from_start": 1.0,
+          "step": "signup_started",
+          "unique_user_basis": true,
+          "users": 800
+        },
+        {
+          "conversion_from_start": 0.834,
+          "step": "signup_completed",
+          "unique_user_basis": true,
+          "users": 667
+        },
+        {
+          "conversion_from_start": 0.599,
+          "step": "profile_saved",
+          "unique_user_basis": true,
+          "users": 479
+        },
+        {
+          "conversion_from_start": 0.529,
+          "step": "onboarding_completed",
+          "unique_user_basis": true,
+          "users": 423
+        },
+        {
+          "conversion_from_start": 0.275,
+          "step": "activation_completed",
+          "unique_user_basis": true,
+          "users": 220
+        }
+      ],
+      "release": "v2.2.0-healthy",
+      "total_events": 4080,
+      "trusted_events": 4080,
+      "trusted_funnel": [
+        {
+          "conversion_from_start": 1.0,
+          "step": "signup_started",
+          "unique_user_basis": true,
+          "users": 800
+        },
+        {
+          "conversion_from_start": 0.834,
+          "step": "signup_completed",
+          "unique_user_basis": true,
+          "users": 667
+        },
+        {
+          "conversion_from_start": 0.599,
+          "step": "profile_saved",
+          "unique_user_basis": true,
+          "users": 479
+        },
+        {
+          "conversion_from_start": 0.529,
+          "step": "onboarding_completed",
+          "unique_user_basis": true,
+          "users": 423
+        },
+        {
+          "conversion_from_start": 0.275,
+          "step": "activation_completed",
+          "unique_user_basis": true,
+          "users": 220
+        }
+      ],
+      "verdict": {
+        "classification": "baseline",
+        "gain_step": null,
+        "raw_gain_pct": 0.0,
+        "raw_looks_better": false,
+        "survives_trusted_filter": false,
+        "trusted_gain_pct": 0.0
+      }
+    },
+    {
+      "activation_raw_rate": 0.255,
+      "activation_trusted_ci": [
+        0.226,
+        0.2863
+      ],
+      "activation_trusted_rate": 0.255,
+      "instrumentation_status": "block",
+      "raw_funnel": [
+        {
+          "conversion_from_start": 1.0,
+          "step": "signup_started",
+          "unique_user_basis": true,
+          "users": 800
+        },
+        {
+          "conversion_from_start": 0.836,
+          "step": "signup_completed",
+          "unique_user_basis": true,
+          "users": 669
+        },
+        {
+          "conversion_from_start": 0.6,
+          "step": "profile_saved",
+          "unique_user_basis": true,
+          "users": 480
+        },
+        {
+          "conversion_from_start": 0.657,
+          "step": "onboarding_completed",
+          "unique_user_basis": true,
+          "users": 526
+        },
+        {
+          "conversion_from_start": 0.255,
+          "step": "activation_completed",
+          "unique_user_basis": true,
+          "users": 204
+        }
+      ],
+      "release": "v2.3.0-buggy",
+      "total_events": 4336,
+      "trusted_events": 4155,
+      "trusted_funnel": [
+        {
+          "conversion_from_start": 1.0,
+          "step": "signup_started",
+          "unique_user_basis": true,
+          "users": 800
+        },
+        {
+          "conversion_from_start": 0.836,
+          "step": "signup_completed",
+          "unique_user_basis": true,
+          "users": 669
+        },
+        {
+          "conversion_from_start": 0.6,
+          "step": "profile_saved",
+          "unique_user_basis": true,
+          "users": 480
+        },
+        {
+          "conversion_from_start": 0.524,
+          "step": "onboarding_completed",
+          "unique_user_basis": true,
+          "users": 419
+        },
+        {
+          "conversion_from_start": 0.255,
+          "step": "activation_completed",
+          "unique_user_basis": true,
+          "users": 204
+        }
+      ],
+      "verdict": {
+        "classification": "instrumentation_artifact",
+        "gain_step": "onboarding_completed",
+        "raw_gain_pct": 24.3,
+        "raw_looks_better": true,
+        "survives_trusted_filter": false,
+        "trusted_gain_pct": -0.9
+      }
+    },
+    {
+      "activation_raw_rate": 0.3,
+      "activation_trusted_ci": [
+        0.2693,
+        0.3326
+      ],
+      "activation_trusted_rate": 0.3,
+      "instrumentation_status": "pass",
+      "raw_funnel": [
+        {
+          "conversion_from_start": 1.0,
+          "step": "signup_started",
+          "unique_user_basis": true,
+          "users": 800
+        },
+        {
+          "conversion_from_start": 0.809,
+          "step": "signup_completed",
+          "unique_user_basis": true,
+          "users": 647
+        },
+        {
+          "conversion_from_start": 0.58,
+          "step": "profile_saved",
+          "unique_user_basis": true,
+          "users": 464
+        },
+        {
+          "conversion_from_start": 0.509,
+          "step": "onboarding_completed",
+          "unique_user_basis": true,
+          "users": 407
+        },
+        {
+          "conversion_from_start": 0.3,
+          "step": "activation_completed",
+          "unique_user_basis": true,
+          "users": 240
+        }
+      ],
+      "release": "v2.3.0-fixed",
+      "total_events": 4059,
+      "trusted_events": 4059,
+      "trusted_funnel": [
+        {
+          "conversion_from_start": 1.0,
+          "step": "signup_started",
+          "unique_user_basis": true,
+          "users": 800
+        },
+        {
+          "conversion_from_start": 0.809,
+          "step": "signup_completed",
+          "unique_user_basis": true,
+          "users": 647
+        },
+        {
+          "conversion_from_start": 0.58,
+          "step": "profile_saved",
+          "unique_user_basis": true,
+          "users": 464
+        },
+        {
+          "conversion_from_start": 0.509,
+          "step": "onboarding_completed",
+          "unique_user_basis": true,
+          "users": 407
+        },
+        {
+          "conversion_from_start": 0.3,
+          "step": "activation_completed",
+          "unique_user_basis": true,
+          "users": 240
+        }
+      ],
+      "verdict": {
+        "classification": "real_improvement",
+        "gain_step": "activation_completed",
+        "raw_gain_pct": 9.1,
+        "raw_looks_better": true,
+        "survives_trusted_filter": true,
+        "trusted_gain_pct": 9.1
+      }
+    }
+  ]
+}
