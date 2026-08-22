@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from dataclasses import FrozenInstanceError
+
 import pytest
 
 from app.services.instrumentation import (
@@ -54,5 +56,5 @@ class TestTrackingContracts:
             severity="block",
         )
         assert violation.event_name == "onboarding_completed"
-        with pytest.raises(Exception):
+        with pytest.raises(FrozenInstanceError):
             violation.event_name = "mutated"  # type: ignore[misc]
