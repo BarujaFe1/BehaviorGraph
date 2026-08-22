@@ -197,6 +197,17 @@ def _unknown_events(frame: pd.DataFrame) -> tuple[str, ...]:
 
 
 @lru_cache(maxsize=8)
+def invalid_row_indices_for(release: str) -> tuple[int, ...]:
+    """Row positions failing any block-level contract check (stable order)."""
+    frame = _load_release_frame(release)
+    missing_idx = _missing_props(frame)
+    order_idx = _order_violation_rows(frame)
+    dup_idx, _ = _duplicate_insert_rows(frame)
+    card_idx = _cardinality_rows(frame)
+    return tuple(sorted(set(missing_idx) | set(order_idx) | set(dup_idx) | set(card_idx)))
+
+
+@lru_cache(maxsize=8)
 def validate_release(release: str) -> InstrumentationReport:
     """Run every deterministic instrumentation check against one release."""
     from app.services.release_fixture import RELEASE_PROFILES
