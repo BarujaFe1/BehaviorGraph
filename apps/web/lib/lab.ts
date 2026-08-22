@@ -1,44 +1,14 @@
 import type {
+  Cohort,
   DemoSummary,
+  FrictionPayload,
   FunnelStep,
   JourneyGraph,
   OpportunityMemo,
   Segment,
+  TaxonomyEvent,
 } from "@/types";
 import snapshot from "@/lib/demo-snapshot.json";
-
-export type TaxonomyEvent = {
-  event_name: string;
-  category: string;
-  description: string;
-  owner: string;
-};
-
-export type CohortWeek = {
-  week_offset: number;
-  week: string;
-  retained_users: number;
-  retention_rate: number;
-};
-
-export type Cohort = {
-  cohort_week: string;
-  cohort_size: number;
-  weeks: CohortWeek[];
-};
-
-export type FrictionDrop = {
-  from_step: string;
-  to_step: string;
-  drop_users: number;
-  drop_rate: number;
-  severity: string;
-};
-
-export type FrictionPayload = {
-  funnel_drops: FrictionDrop[];
-  error_signals: { event_name: string; affected_users: number }[];
-};
 
 export const LAB_NOTICE =
   "Portfolio lab demo on synthetic SaaS onboarding events. Not production tracking, not Mixpanel, and not causal attribution.";
@@ -55,7 +25,11 @@ export function getTaxonomy(): TaxonomyEvent[] {
 }
 
 export function getFunnel(): FunnelStep[] {
-  return (snapshot.funnel as { steps: FunnelStep[] }).steps;
+  return (snapshot.funnel as { steps: FunnelStep[]; method?: string }).steps;
+}
+
+export function getFunnelMethod(): string {
+  return (snapshot.funnel as { method?: string }).method ?? "nested_unique_users";
 }
 
 export function getCohorts(): Cohort[] {

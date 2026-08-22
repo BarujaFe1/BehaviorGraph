@@ -13,7 +13,7 @@
 
 ## Activation funnel
 
-Ordered steps:
+Ordered steps with **nested unique users** (step N must also appear in step N-1):
 
 1. `signup_started`
 2. `signup_completed`
@@ -21,12 +21,15 @@ Ordered steps:
 4. `feature_used`
 5. `activation_completed`
 
-Conversion between steps is unique-user based (not event-count based).
+Each step reports:
+- `users` — nested unique-user count
+- `conversion_from_previous`
+- `conversion_from_start`
 
 ## Retention cohorts
 
-- Cohort key: first-seen week of each `user_id`
-- Retention: share of cohort users active in subsequent weeks
+- Cohort key: first-seen ISO week (`W-MON`) of each `user_id`
+- Retention: share of cohort users active at week offsets W0…W4
 - Demo window is intentionally short and synthetic
 
 ## Journey graph

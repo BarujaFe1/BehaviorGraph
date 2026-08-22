@@ -22,6 +22,7 @@
     <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-React-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
     <img alt="Python" src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" />
     <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-API-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+    <img alt="NetworkX" src="https://img.shields.io/badge/NetworkX-Journey%20Graph-FF6F61?style=for-the-badge" />
     <img alt="Lab Demo" src="https://img.shields.io/badge/Status-Lab%20demo-2563EB?style=for-the-badge" />
     <img alt="MIT" src="https://img.shields.io/badge/License-MIT-111827?style=for-the-badge" />
   </p>
@@ -48,39 +49,47 @@
 
 **BehaviorGraph** conecta taxonomia de eventos, funis de ativação, cohorts de retenção, grafos de jornada e memos de oportunidade de produto em um estúdio analítico de lab.
 
-> **Aviso de lab:** demo de portfólio com dados sintéticos/amostra. Não é produto em produção com SLA, integrações reais de clientes ou garantia operacional.
+> **Aviso de lab:** demo de portfólio com dados sintéticos. Não é produto em produção com SLA, tracking real de usuários ou atribuição causal.
+
+| Item | Estado |
+|---|---|
+| Escopo | Portfolio lab / MVP (seed sintética) |
+| Live Demo | [barujafe1.github.io/BehaviorGraph](https://barujafe1.github.io/BehaviorGraph/) |
+| CI | GitHub Actions (API + Web) |
+| Tracking de produção | **Fora do escopo** |
 
 ---
 
 ## Problema
 
-Eventos de produto ficam em warehouses sem narrativa: sem taxonomia clara, funil e jornada não conversam com a decisão de produto.
+Produtos digitais coletam eventos, mas times ainda lutam para responder:
 
----
+- Quais passos de ativação perdem usuários?
+- Quais transições de sessão dominam?
+- Quais cohorts retêm depois da semana 0?
+- Onde o atrito é alto o suficiente para merecer uma aposta de produto?
 
-## Para quem
-
-- Product analysts e PMs analíticos
-- Growth / activation
-- Engenheiros de analytics
+Métricas de vaidade (“quantos se cadastraram?”) escondem o caminho.
 
 ---
 
 ## Funcionalidades
 
-- Taxonomia de eventos
-- Funis de ativação
-- Cohorts de retenção
-- Grafo de jornada (NetworkX)
-- Memos de oportunidade
-- DuckDB no backend para consultas
+- Taxonomia de eventos como contrato com owner
+- Funil de ativação aninhado (usuários únicos que permanecem dos passos anteriores)
+- Cohorts de retenção por primeira semana vista (offsets W0–W4 reais)
+- Grafo de jornada (transições de sessão via NetworkX)
+- Segmentos + radar de atrito com severidade (`low` / `medium` / `high`)
+- Memo de oportunidade (ação + hipótese de impacto + limites)
+- Snapshot estático para demos públicas confiáveis
+- Backend FastAPI opcional para execução full-stack local
 
 ---
 
 ## Escopo e limites
 
 - **É:** estúdio lab de behavioral analytics.
-- **Não é:** Amplitude/Mixpanel clone, CDP, tracking SDK de produção.
+- **Não é:** clone de Amplitude/Mixpanel, CDP, SDK de tracking de produção, ferramenta causal.
 
 ---
 
@@ -92,39 +101,40 @@ Eventos de produto ficam em warehouses sem narrativa: sem taxonomia clara, funil
 
 **BehaviorGraph** connects event taxonomy, activation funnels, retention cohorts, journey graphs and product opportunity memos in one analytics studio lab.
 
-> **Lab notice:** portfolio demo with synthetic/sample data. Not a production product with SLA, real customer integrations, or operational guarantees.
+> **Lab notice:** portfolio demo with synthetic data only. Not production telemetry, not Mixpanel, and not causal attribution.
 
 ---
 
 ## Problem
 
-Product events sit in warehouses without narrative: without clear taxonomy, funnel and journey never meet product decisions.
+Digital products collect events, but teams still struggle to answer:
+
+- Which activation steps lose users?
+- Which session transitions dominate?
+- Which cohorts retain after week 0?
+- Where is friction high enough to deserve a product bet?
+
+Conversion vanity metrics (“how many signed up?”) hide the path.
 
 ---
 
-## Who it is for
+## Core features
 
-- Product analysts and analytical PMs
-- Growth / activation
-- Analytics engineers
-
----
-
-## Features
-
-- Event taxonomy
-- Activation funnels
-- Retention cohorts
-- Journey graph (NetworkX)
-- Opportunity memos
-- DuckDB on the backend for queries
+- Event taxonomy as an owned contract
+- Nested unique-user activation funnel (+ conversion from start)
+- Retention cohorts with true W0–W4 offsets
+- Journey graph edges with weights (NetworkX)
+- Segments + friction severity bands
+- Opportunity memo (action + impact hypothesis + limits)
+- Static lab snapshot for reliable public demos
+- Optional FastAPI backend for local full-stack runs
 
 ---
 
 ## Scope and limits
 
 - **Is:** behavioral analytics studio lab.
-- **Is not:** Amplitude/Mixpanel clone, CDP, production tracking SDK.
+- **Is not:** Amplitude/Mixpanel clone, CDP, production tracking SDK, causal tool.
 
 ---
 
@@ -136,7 +146,34 @@ Product events sit in warehouses without narrative: without clear taxonomy, funn
 
 Demo hospedada para avaliação de portfólio / Hosted for portfolio review.
 
-> Lab demo — synthetic / sample data unless noted. Not a production SLA product.
+> Lab demo — synthetic data only. Not a production SLA product.
+
+---
+
+## Screenshots
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="./assets/screenshots/03-activation-funnel.png" alt="Activation Funnel" />
+      <br /><sub><strong>Activation Funnel</strong> — nested unique-user conversion</sub>
+    </td>
+    <td width="50%">
+      <img src="./assets/screenshots/04-retention-cohorts.png" alt="Retention Cohorts" />
+      <br /><sub><strong>Retention Cohorts</strong> — first-seen week matrix</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="./assets/screenshots/05-journey-path-graph.png" alt="Journey Graph" />
+      <br /><sub><strong>Journey Graph</strong> — session transitions</sub>
+    </td>
+    <td width="50%">
+      <img src="./assets/screenshots/08-opportunity-memo.png" alt="Opportunity Memo" />
+      <br /><sub><strong>Opportunity Memo</strong> — hypotheses + limits</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -147,9 +184,9 @@ Demo hospedada para avaliação de portfólio / Hosted for portfolio review.
 | Tecnologia | Uso no projeto |
 |---|---|
 | Next.js 15 / React 19 / TypeScript | UI + export estático |
-| Recharts / Lucide | Charts |
-| FastAPI / Pandas / NetworkX / DuckDB | Analytics API |
-| Pytest / Ruff | Testes |
+| Recharts | Charts |
+| FastAPI / Pydantic v2 / Pandas / NetworkX | Analytics API |
+| Pytest / Ruff / ESLint / tsc / GitHub Actions | Qualidade |
 
 ---
 
@@ -157,20 +194,19 @@ Demo hospedada para avaliação de portfólio / Hosted for portfolio review.
 
 ## Arquitetura / Architecture
 
-Monorepo API + web com seeds/uploads e docs de metodologia/roadmap.
+```text
+CSV seed → FastAPI analytics (Pandas/NetworkX/Pydantic)
+                 ↓
+         demo-snapshot.json (static)
+                 ↓
+     Next.js cockpit (Recharts)
+```
 
-`	xt
-BehaviorGraph/
-├── apps/
-│   ├── api/
-│   └── web/
-├── assets/
-├── data/seed/
-├── docs/
-├── scripts/
-├── start.bat
-└── vercel.json
-`
+Details: [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) · decisions: [docs/TECHNICAL_DECISIONS.md](./docs/TECHNICAL_DECISIONS.md)
+
+<p align="center">
+  <img src="./assets/architecture-pipeline.png" alt="BehaviorGraph architecture" width="100%" />
+</p>
 
 ---
 
@@ -184,24 +220,27 @@ BehaviorGraph/
 - Python 3.12+
 - npm
 
-### Clonar / Clone
-
-`ash
-git clone https://github.com/BarujaFe1/BehaviorGraph.git
-cd BehaviorGraph
-`
-
 ### Windows (atalho)
 
-`at
+```bat
 start.bat
-`
+```
 
 Sobe API em :8000 e web em :3000.
 
-### Manual
+### Static web lab only
 
-`ash
+```bash
+cd apps/web
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) — uses embedded snapshot (no API required).
+
+### Full-stack manual
+
+```bash
 # API
 cd apps/api
 python -m venv .venv
@@ -209,39 +248,77 @@ python -m venv .venv
 # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
-`
 
-`ash
-# Web (outro terminal)
+# Web (outro terminal / another terminal)
 cd apps/web
 npm install
 npm run dev
-`
+```
 
 Abra http://localhost:3000
 
-Copie .env.example se precisar de NEXT_PUBLIC_API_URL.
+### Environment variables
 
+See [`.env.example`](./.env.example) and [`apps/web/.env.example`](./apps/web/.env.example).
+
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | Optional FastAPI base URL; empty = snapshot lab mode |
+| `GITHUB_PAGES=true` | Adds `/BehaviorGraph` basePath for Pages builds |
+
+Never commit `.env.local` or secrets. See [SECURITY_NOTES.md](./SECURITY_NOTES.md).
 
 ---
 
-## Technical decisions / Decisões técnicas
+## Tests & quality
 
-- **Taxonomia primeiro** — eventos sem contrato viram ruído.
-- **NetworkX** para jornadas explicáveis.
-- **Pages demo** para revisão estável de portfólio.
+```bash
+# API
+cd apps/api
+.venv\Scripts\python -m pytest -q
+.venv\Scripts\ruff check app tests
+
+# Web
+cd apps/web
+npm run lint
+npm run typecheck
+npm run build
+```
+
+More: [docs/TESTING.md](./docs/TESTING.md) · Deploy: [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)
+
+---
+
+## Trade-offs
+
+| Choice | Gain | Cost |
+|---|---|---|
+| Static snapshot demo | Reliable public URL | Must regenerate after analytics changes |
+| Nested funnel | Honest drop-offs | Stricter than independent counts |
+| Transition graph | Clear journey story | Not attribution / not causal |
+| Lab scope | Portfolio clarity | Not a full product-analytics suite |
 
 ---
 
 ## Roadmap
 
-### Implementado
-- Taxonomia, funis, cohorts, journey graph, memo, Pages demo
+- **MVP (done):** taxonomy, nested funnel, cohorts, graph, friction, memo, static demo, CI
+- **Phase 2 (in progress):** release intelligence — tracking contracts, instrumentation validator, raw vs trusted funnel comparison per release
+- **Phase 3:** minimal SDK, near-real-time ingest, experiment tags
 
-### Planejado
-- Mais templates de memo
-- Upload de eventos CSV
-- Comparação de releases
+Non-goals: Mixpanel clone, generic metrics dashboard, production tracking.
+
+---
+
+## What this project demonstrates
+
+- Product analytics thinking (instrumentation → narrative → decision)
+- Correct funnel/cohort definitions (not vanity charts)
+- Full-stack delivery (FastAPI + Next.js) with a resilient static demo mode
+- Responsible analytics communication (limits stated in UI + docs)
+- Engineering hygiene (Pydantic contracts, tests, CI, deploy docs)
+
+Pitch notes: [docs/portfolio_pitch.md](./docs/portfolio_pitch.md)
 
 ---
 
@@ -260,7 +337,7 @@ Developed by **Felipe Alirio Baruja**.
 
 ## License / Licença
 
-MIT License.
+MIT License © 2026 Felipe Alirio Baruja.
 
 See [LICENSE](./LICENSE) for details.
 

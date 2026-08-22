@@ -4,7 +4,6 @@ pydantic>=2.10.0
 pandas>=2.2.0
 numpy>=2.1.0
 networkx>=3.4.0
-duckdb>=1.1.0
 python-multipart>=0.0.12
 httpx>=0.28.0
 pytest>=8.0.0

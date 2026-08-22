@@ -7,7 +7,7 @@
     "sessions": 289,
     "activated_users": 55,
     "activation_rate": 0.25,
-    "notice": "Demo uses synthetic events only — not production tracking."
+    "notice": "Demo uses synthetic events only — not production tracking, not Mixpanel, and not causal attribution."
   },
   "taxonomy": {
     "events": [
@@ -75,181 +75,224 @@
   },
   "funnel": {
     "funnel": "activation",
+    "method": "nested_unique_users",
     "steps": [
       {
         "step": "signup_started",
         "users": 220,
-        "conversion_from_previous": 1.0
+        "conversion_from_previous": 1.0,
+        "conversion_from_start": 1.0
       },
       {
         "step": "signup_completed",
         "users": 186,
-        "conversion_from_previous": 0.845
+        "conversion_from_previous": 0.845,
+        "conversion_from_start": 0.845
       },
       {
         "step": "onboarding_step_viewed",
         "users": 147,
-        "conversion_from_previous": 0.79
+        "conversion_from_previous": 0.79,
+        "conversion_from_start": 0.668
       },
       {
         "step": "feature_used",
         "users": 102,
-        "conversion_from_previous": 0.694
+        "conversion_from_previous": 0.694,
+        "conversion_from_start": 0.464
       },
       {
         "step": "activation_completed",
         "users": 55,
-        "conversion_from_previous": 0.539
+        "conversion_from_previous": 0.539,
+        "conversion_from_start": 0.25
       }
     ]
   },
   "cohorts": {
     "cohorts": [
       {
-        "cohort_week": "2026-04-27/2026-05-03",
-        "cohort_size": 16,
+        "cohort_week": "2026-04-28/2026-05-04",
+        "cohort_size": 25,
         "weeks": [
           {
             "week_offset": 0,
-            "week": "2026-04-27/2026-05-03",
-            "retained_users": 16,
+            "week": "2026-04-28/2026-05-04",
+            "retained_users": 25,
             "retention_rate": 1.0
           },
           {
             "week_offset": 1,
-            "week": "2026-05-04/2026-05-10",
-            "retained_users": 5,
-            "retention_rate": 0.312
+            "week": "2026-05-05/2026-05-11",
+            "retained_users": 7,
+            "retention_rate": 0.28
           },
           {
             "week_offset": 2,
-            "week": "2026-05-18/2026-05-24",
+            "week": "2026-05-12/2026-05-18",
             "retained_users": 1,
-            "retention_rate": 0.062
-          }
-        ]
-      },
-      {
-        "cohort_week": "2026-05-04/2026-05-10",
-        "cohort_size": 57,
-        "weeks": [
-          {
-            "week_offset": 0,
-            "week": "2026-05-04/2026-05-10",
-            "retained_users": 57,
-            "retention_rate": 1.0
-          },
-          {
-            "week_offset": 1,
-            "week": "2026-05-11/2026-05-17",
-            "retained_users": 12,
-            "retention_rate": 0.211
-          },
-          {
-            "week_offset": 2,
-            "week": "2026-05-18/2026-05-24",
-            "retained_users": 2,
-            "retention_rate": 0.035
+            "retention_rate": 0.04
           },
           {
             "week_offset": 3,
-            "week": "2026-05-25/2026-05-31",
-            "retained_users": 3,
-            "retention_rate": 0.053
+            "week": "2026-05-19/2026-05-25",
+            "retained_users": 1,
+            "retention_rate": 0.04
+          },
+          {
+            "week_offset": 4,
+            "week": "2026-05-26/2026-06-01",
+            "retained_users": 0,
+            "retention_rate": 0.0
           }
         ]
       },
       {
-        "cohort_week": "2026-05-11/2026-05-17",
-        "cohort_size": 48,
+        "cohort_week": "2026-05-05/2026-05-11",
+        "cohort_size": 52,
         "weeks": [
           {
             "week_offset": 0,
-            "week": "2026-05-11/2026-05-17",
-            "retained_users": 48,
+            "week": "2026-05-05/2026-05-11",
+            "retained_users": 52,
             "retention_rate": 1.0
           },
           {
             "week_offset": 1,
-            "week": "2026-05-18/2026-05-24",
-            "retained_users": 3,
-            "retention_rate": 0.062
+            "week": "2026-05-12/2026-05-18",
+            "retained_users": 13,
+            "retention_rate": 0.25
           },
           {
             "week_offset": 2,
-            "week": "2026-05-25/2026-05-31",
-            "retained_users": 4,
-            "retention_rate": 0.083
+            "week": "2026-05-19/2026-05-25",
+            "retained_users": 1,
+            "retention_rate": 0.019
           },
           {
             "week_offset": 3,
-            "week": "2026-06-01/2026-06-07",
-            "retained_users": 2,
-            "retention_rate": 0.042
-          }
-        ]
-      },
-      {
-        "cohort_week": "2026-05-18/2026-05-24",
-        "cohort_size": 56,
-        "weeks": [
-          {
-            "week_offset": 0,
-            "week": "2026-05-18/2026-05-24",
-            "retained_users": 56,
-            "retention_rate": 1.0
-          },
-          {
-            "week_offset": 1,
-            "week": "2026-05-25/2026-05-31",
-            "retained_users": 11,
-            "retention_rate": 0.196
-          },
-          {
-            "week_offset": 2,
-            "week": "2026-06-01/2026-06-07",
+            "week": "2026-05-26/2026-06-01",
             "retained_users": 3,
-            "retention_rate": 0.054
+            "retention_rate": 0.058
           },
           {
-            "week_offset": 3,
-            "week": "2026-06-08/2026-06-14",
-            "retained_users": 4,
-            "retention_rate": 0.071
+            "week_offset": 4,
+            "week": "2026-06-02/2026-06-08",
+            "retained_users": 0,
+            "retention_rate": 0.0
           }
         ]
       },
       {
-        "cohort_week": "2026-05-25/2026-05-31",
-        "cohort_size": 43,
+        "cohort_week": "2026-05-12/2026-05-18",
+        "cohort_size": 54,
         "weeks": [
           {
             "week_offset": 0,
-            "week": "2026-05-25/2026-05-31",
-            "retained_users": 43,
+            "week": "2026-05-12/2026-05-18",
+            "retained_users": 54,
             "retention_rate": 1.0
           },
           {
             "week_offset": 1,
-            "week": "2026-06-01/2026-06-07",
-            "retained_users": 4,
+            "week": "2026-05-19/2026-05-25",
+            "retained_users": 5,
             "retention_rate": 0.093
           },
           {
             "week_offset": 2,
-            "week": "2026-06-08/2026-06-14",
-            "retained_users": 2,
-            "retention_rate": 0.047
+            "week": "2026-05-26/2026-06-01",
+            "retained_users": 5,
+            "retention_rate": 0.093
           },
           {
             "week_offset": 3,
-            "week": "2026-06-15/2026-06-21",
+            "week": "2026-06-02/2026-06-08",
+            "retained_users": 3,
+            "retention_rate": 0.056
+          },
+          {
+            "week_offset": 4,
+            "week": "2026-06-09/2026-06-15",
+            "retained_users": 0,
+            "retention_rate": 0.0
+          }
+        ]
+      },
+      {
+        "cohort_week": "2026-05-19/2026-05-25",
+        "cohort_size": 55,
+        "weeks": [
+          {
+            "week_offset": 0,
+            "week": "2026-05-19/2026-05-25",
+            "retained_users": 55,
+            "retention_rate": 1.0
+          },
+          {
+            "week_offset": 1,
+            "week": "2026-05-26/2026-06-01",
+            "retained_users": 10,
+            "retention_rate": 0.182
+          },
+          {
+            "week_offset": 2,
+            "week": "2026-06-02/2026-06-08",
             "retained_users": 2,
-            "retention_rate": 0.047
+            "retention_rate": 0.036
+          },
+          {
+            "week_offset": 3,
+            "week": "2026-06-09/2026-06-15",
+            "retained_users": 4,
+            "retention_rate": 0.073
+          },
+          {
+            "week_offset": 4,
+            "week": "2026-06-16/2026-06-22",
+            "retained_users": 0,
+            "retention_rate": 0.0
+          }
+        ]
+      },
+      {
+        "cohort_week": "2026-05-26/2026-06-01",
+        "cohort_size": 34,
+        "weeks": [
+          {
+            "week_offset": 0,
+            "week": "2026-05-26/2026-06-01",
+            "retained_users": 34,
+            "retention_rate": 1.0
+          },
+          {
+            "week_offset": 1,
+            "week": "2026-06-02/2026-06-08",
+            "retained_users": 3,
+            "retention_rate": 0.088
+          },
+          {
+            "week_offset": 2,
+            "week": "2026-06-09/2026-06-15",
+            "retained_users": 1,
+            "retention_rate": 0.029
+          },
+          {
+            "week_offset": 3,
+            "week": "2026-06-16/2026-06-22",
+            "retained_users": 2,
+            "retention_rate": 0.059
+          },
+          {
+            "week_offset": 4,
+            "week": "2026-06-23/2026-06-29",
+            "retained_users": 0,
+            "retention_rate": 0.0
           }
         ]
       }
-    ]
+    ],
+    "method": "first_seen_week"
   },
   "journey": {
     "nodes": [
@@ -452,12 +495,12 @@
       "sessions": 289,
       "activated_users": 55,
       "activation_rate": 0.25,
-      "notice": "Demo uses synthetic events only — not production tracking."
+      "notice": "Demo uses synthetic events only — not production tracking, not Mixpanel, and not causal attribution."
     },
     "opportunities": [
       {
         "title": "Reduce drop feature_used → activation_completed",
-        "why": "Drop rate 46% on the activation path.",
+        "why": "Drop rate 46% on the nested activation path.",
         "suggested_action": "Simplify the step UX, add progressive disclosure, instrument micro-errors.",
         "impact_hypothesis": "Improving this transition should lift activation_rate without new acquisition."
       },
@@ -477,7 +520,8 @@
     "limitations": [
       "Synthetic dataset — not causal proof.",
       "No production SDK ingest in MVP.",
-      "Path graph is session-local transition counts, not Markov attribution."
+      "Path graph is session-local transition counts, not Markov attribution.",
+      "Nested funnel counts unique users remaining in the prior step set."
     ]
   },
   "recent_events": [
@@ -485,7 +529,7 @@
       "event_id": "evt_000528",
       "user_id": "user_0125",
       "event_name": "invite_sent",
-      "ts": "2026-06-03T07:12:00+00:00",
+      "ts": "2026-06-03T07:12:00Z",
       "session_id": "s_0125_02",
       "properties": "{}"
     },
@@ -493,7 +537,7 @@
       "event_id": "evt_000820",
       "user_id": "user_0186",
       "event_name": "return_visit",
-      "ts": "2026-06-04T02:00:00+00:00",
+      "ts": "2026-06-04T02:00:00Z",
       "session_id": "s_0186_02",
       "properties": "{}"
     },
@@ -501,7 +545,7 @@
       "event_id": "evt_000942",
       "user_id": "user_0213",
       "event_name": "return_visit",
-      "ts": "2026-06-04T11:00:00+00:00",
+      "ts": "2026-06-04T11:00:00Z",
       "session_id": "s_0213_03",
       "properties": "{}"
     },
@@ -509,7 +553,7 @@
       "event_id": "evt_000943",
       "user_id": "user_0213",
       "event_name": "feature_used",
-      "ts": "2026-06-04T11:04:00+00:00",
+      "ts": "2026-06-04T11:04:00Z",
       "session_id": "s_0213_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -517,7 +561,7 @@
       "event_id": "evt_000375",
       "user_id": "user_0085",
       "event_name": "return_visit",
-      "ts": "2026-06-05T02:00:00+00:00",
+      "ts": "2026-06-05T02:00:00Z",
       "session_id": "s_0085_03",
       "properties": "{}"
     },
@@ -525,7 +569,7 @@
       "event_id": "evt_000376",
       "user_id": "user_0085",
       "event_name": "feature_used",
-      "ts": "2026-06-05T02:04:00+00:00",
+      "ts": "2026-06-05T02:04:00Z",
       "session_id": "s_0085_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -533,7 +577,7 @@
       "event_id": "evt_000676",
       "user_id": "user_0153",
       "event_name": "return_visit",
-      "ts": "2026-06-07T08:00:00+00:00",
+      "ts": "2026-06-07T08:00:00Z",
       "session_id": "s_0153_03",
       "properties": "{}"
     },
@@ -541,7 +585,7 @@
       "event_id": "evt_000677",
       "user_id": "user_0153",
       "event_name": "feature_used",
-      "ts": "2026-06-07T08:04:00+00:00",
+      "ts": "2026-06-07T08:04:00Z",
       "session_id": "s_0153_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -549,7 +593,7 @@
       "event_id": "evt_000610",
       "user_id": "user_0141",
       "event_name": "return_visit",
-      "ts": "2026-06-08T18:00:00+00:00",
+      "ts": "2026-06-08T18:00:00Z",
       "session_id": "s_0141_02",
       "properties": "{}"
     },
@@ -557,7 +601,7 @@
       "event_id": "evt_000611",
       "user_id": "user_0141",
       "event_name": "feature_used",
-      "ts": "2026-06-08T18:05:00+00:00",
+      "ts": "2026-06-08T18:05:00Z",
       "session_id": "s_0141_02",
       "properties": "{\"feature\":\"board\"}"
     },
@@ -565,7 +609,7 @@
       "event_id": "evt_000612",
       "user_id": "user_0141",
       "event_name": "invite_sent",
-      "ts": "2026-06-08T18:12:00+00:00",
+      "ts": "2026-06-08T18:12:00Z",
       "session_id": "s_0141_02",
       "properties": "{}"
     },
@@ -573,7 +617,7 @@
       "event_id": "evt_000295",
       "user_id": "user_0069",
       "event_name": "return_visit",
-      "ts": "2026-06-09T13:00:00+00:00",
+      "ts": "2026-06-09T13:00:00Z",
       "session_id": "s_0069_03",
       "properties": "{}"
     },
@@ -581,7 +625,7 @@
       "event_id": "evt_000296",
       "user_id": "user_0069",
       "event_name": "feature_used",
-      "ts": "2026-06-09T13:04:00+00:00",
+      "ts": "2026-06-09T13:04:00Z",
       "session_id": "s_0069_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -589,7 +633,7 @@
       "event_id": "evt_000854",
       "user_id": "user_0194",
       "event_name": "return_visit",
-      "ts": "2026-06-11T19:00:00+00:00",
+      "ts": "2026-06-11T19:00:00Z",
       "session_id": "s_0194_03",
       "properties": "{}"
     },
@@ -597,7 +641,7 @@
       "event_id": "evt_000855",
       "user_id": "user_0194",
       "event_name": "feature_used",
-      "ts": "2026-06-11T19:04:00+00:00",
+      "ts": "2026-06-11T19:04:00Z",
       "session_id": "s_0194_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -605,7 +649,7 @@
       "event_id": "evt_000488",
       "user_id": "user_0115",
       "event_name": "return_visit",
-      "ts": "2026-06-12T11:00:00+00:00",
+      "ts": "2026-06-12T11:00:00Z",
       "session_id": "s_0115_03",
       "properties": "{}"
     },
@@ -613,7 +657,7 @@
       "event_id": "evt_000489",
       "user_id": "user_0115",
       "event_name": "feature_used",
-      "ts": "2026-06-12T11:04:00+00:00",
+      "ts": "2026-06-12T11:04:00Z",
       "session_id": "s_0115_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -621,7 +665,7 @@
       "event_id": "evt_000302",
       "user_id": "user_0070",
       "event_name": "return_visit",
-      "ts": "2026-06-13T23:00:00+00:00",
+      "ts": "2026-06-13T23:00:00Z",
       "session_id": "s_0070_03",
       "properties": "{}"
     },
@@ -629,7 +673,7 @@
       "event_id": "evt_000303",
       "user_id": "user_0070",
       "event_name": "feature_used",
-      "ts": "2026-06-13T23:04:00+00:00",
+      "ts": "2026-06-13T23:04:00Z",
       "session_id": "s_0070_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -637,7 +681,7 @@
       "event_id": "evt_000821",
       "user_id": "user_0186",
       "event_name": "return_visit",
-      "ts": "2026-06-14T21:00:00+00:00",
+      "ts": "2026-06-14T21:00:00Z",
       "session_id": "s_0186_03",
       "properties": "{}"
     },
@@ -645,7 +689,7 @@
       "event_id": "evt_000822",
       "user_id": "user_0186",
       "event_name": "feature_used",
-      "ts": "2026-06-14T21:04:00+00:00",
+      "ts": "2026-06-14T21:04:00Z",
       "session_id": "s_0186_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -653,7 +697,7 @@
       "event_id": "evt_000123",
       "user_id": "user_0029",
       "event_name": "return_visit",
-      "ts": "2026-06-17T08:00:00+00:00",
+      "ts": "2026-06-17T08:00:00Z",
       "session_id": "s_0029_03",
       "properties": "{}"
     },
@@ -661,7 +705,7 @@
       "event_id": "evt_000124",
       "user_id": "user_0029",
       "event_name": "feature_used",
-      "ts": "2026-06-17T08:04:00+00:00",
+      "ts": "2026-06-17T08:04:00Z",
       "session_id": "s_0029_03",
       "properties": "{\"feature\":\"insights\"}"
     },
@@ -669,7 +713,7 @@
       "event_id": "evt_000768",
       "user_id": "user_0175",
       "event_name": "return_visit",
-      "ts": "2026-06-17T22:00:00+00:00",
+      "ts": "2026-06-17T22:00:00Z",
       "session_id": "s_0175_03",
       "properties": "{}"
     },
@@ -677,7 +721,7 @@
       "event_id": "evt_000769",
       "user_id": "user_0175",
       "event_name": "feature_used",
-      "ts": "2026-06-17T22:04:00+00:00",
+      "ts": "2026-06-17T22:04:00Z",
       "session_id": "s_0175_03",
       "properties": "{\"feature\":\"insights\"}"
     }
