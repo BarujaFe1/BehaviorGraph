@@ -9,6 +9,7 @@ strictly observational â€” no causal claims without an experiment flag.
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 
 from app.services.instrumentation import validate_release
@@ -30,6 +31,17 @@ OBSERVATIONAL_NOTICE = (
     "Observational comparison only. Rates describe what fired per unique user; "
     "no causal effect is claimed without a controlled experiment."
 )
+
+
+def wilson_interval(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """Wilson score interval for a proportion — never returns negative bounds."""
+    if n <= 0:
+        return (0.0, 0.0)
+    p = k / n
+    denom = 1 + z * z / n
+    center = (p + z * z / (2 * n)) / denom
+    half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / denom
+    return (round(max(0.0, center - half), 4), round(min(1.0, center + half), 4))
 
 
 @dataclass(frozen=True)
@@ -149,6 +161,10 @@ def build_overview() -> dict:
     for release in RELEASES:
         comparison = compare_release(release)
         report = validate_release(release)
+        starters = comparison.raw_funnel[0]["users"]
+        activated_trusted = _step_map(comparison.trusted_funnel)["activation_completed"][
+            "users"
+        ]
         releases.append(
             {
                 "release": release,
@@ -156,6 +172,7 @@ def build_overview() -> dict:
                 "trusted_events": comparison.trusted_events,
                 "activation_raw_rate": comparison.activation_raw_rate,
                 "activation_trusted_rate": comparison.activation_trusted_rate,
+                "activation_trusted_ci": wilson_interval(activated_trusted, starters),
                 "instrumentation_status": report.status,
                 "verdict": comparison.verdict,
                 "raw_funnel": list(comparison.raw_funnel),

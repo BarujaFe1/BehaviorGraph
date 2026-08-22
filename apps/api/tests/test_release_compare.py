@@ -8,7 +8,40 @@ from app.services.release_compare import (
     ACTIVATION_STEPS,
     build_overview,
     compare_release,
+    wilson_interval,
 )
+
+
+class TestUncertainty:
+    """Phase 6 — confidence bands and observational-only language."""
+
+    def test_wilson_brackets_point_estimate(self) -> None:
+        low, high = wilson_interval(194, 704)
+        assert low < 194 / 704 < high
+
+    def test_wilson_width_shrinks_with_sample_size(self) -> None:
+        narrow_low, narrow_high = wilson_interval(500, 1000)
+        wide_low, wide_high = wilson_interval(5, 10)
+        assert (narrow_high - narrow_low) < (wide_high - wide_low)
+
+    def test_wilson_handles_degenerate_counts(self) -> None:
+        assert wilson_interval(0, 0) == (0.0, 0.0)
+        low, high = wilson_interval(0, 50)
+        assert low == 0.0 and high > 0.0
+
+    def test_overview_carries_confidence_intervals(self) -> None:
+        overview = build_overview()
+        for entry in overview["releases"]:
+            low, high = entry["activation_trusted_ci"]
+            rate = entry["activation_trusted_rate"]
+            assert low <= rate <= high, f"CI must bracket the estimate for {entry['release']}"
+
+    def test_payloads_stay_observational(self) -> None:
+        overview = build_overview()
+        text = str(overview).lower()
+        for banned in ("because of the release", "caused by", "due to the release"):
+            assert banned not in text
+        assert overview["observational_notice"].startswith("Observational")
 
 
 class TestReleaseCompare:
