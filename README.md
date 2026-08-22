@@ -106,6 +106,19 @@ v2.3.0-fixed  activation_completed      +9.1%   →  trusted +9.1%   ⇒ melhora
 
 Demo: [`/releases`](https://barujafe1.github.io/BehaviorGraph/releases/) · Método: [docs/RELEASE_INTELLIGENCE_METHOD.md](./docs/RELEASE_INTELLIGENCE_METHOD.md)
 
+<table>
+  <tr>
+    <td width="50%">
+      <img src="./assets/screenshots/09-release-verdict-buggy.png" alt="Buggy release verdict" />
+      <br /><sub><strong>v2.3.0-buggy</strong> — raw +24.3% desaparece no trusted (−0.9%): artefato de instrumentação</sub>
+    </td>
+    <td width="50%">
+      <img src="./assets/screenshots/10-release-verdict-fixed.png" alt="Fixed release verdict" />
+      <br /><sub><strong>v2.3.0-fixed</strong> — +9.1% sobrevive ao filtro trusted: melhora real</sub>
+    </td>
+  </tr>
+</table>
+
 ---
 
 ## Escopo e limites
@@ -172,6 +185,19 @@ v2.3.0-fixed  activation_completed      +9.1%   →  trusted +9.1%   ⇒ real im
 ```
 
 Demo: [`/releases`](https://barujafe1.github.io/BehaviorGraph/releases/) · Method: [docs/RELEASE_INTELLIGENCE_METHOD.md](./docs/RELEASE_INTELLIGENCE_METHOD.md)
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="./assets/screenshots/09-release-verdict-buggy.png" alt="Buggy release verdict" />
+      <br /><sub><strong>v2.3.0-buggy</strong> — raw +24.3% vanishes under trusted (−0.9%): instrumentation artifact</sub>
+    </td>
+    <td width="50%">
+      <img src="./assets/screenshots/10-release-verdict-fixed.png" alt="Fixed release verdict" />
+      <br /><sub><strong>v2.3.0-fixed</strong> — +9.1% survives the trusted filter: real improvement</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
